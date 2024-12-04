@@ -11,7 +11,6 @@
 		<h1>JA2PYC</h1>
 		<div>키 저장후 커밋 푸시</div>
 		<div>키 저장후 커밋 푸시</div>
-		<div>키 저장후 커밋 푸시</div>
 	</main>
 </body>
 </html>
