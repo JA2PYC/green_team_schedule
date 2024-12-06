@@ -30,12 +30,12 @@
 						<tbody>
 							<tr>
 								<th><label for="customerName">성명</label></th>
-								<td><input type="text" name="customerName"
+								<td><input type="text" name="canme"
 									id="customerName" placeholder="성명" required></td>
 							</tr>
 							<tr>
 								<th><label for="customerPhone1">전화번호</label></th>
-								<td><select name="customerPhone1" id="customerPhone1"
+								<td><select name="cphone1" id="customerPhone1"
 									class="phone">
 										<option value="010">010</option>
 										<option value="011">011</option>
@@ -43,10 +43,10 @@
 										<option value="017">017</option>
 										<option value="018">018</option>
 										<option value="019">019</option>
-								</select> - <input type="tel" name="customerPhone2" id="customerPhone2"
+								</select> - <input type="tel" name="cphone2" id="customerPhone2"
 									class="phone" min="0000" max="9999" minlength="3" maxlength="4"
 									step="1" placeholder="전화번호" required> - <input
-									type="tel" name="customerPhone3" id="customerPhone3"
+									type="tel" name="cphone3" id="customerPhone3"
 									class="phone" min="0000" max="9999" minlength="4" maxlength="4"
 									step="1" placeholder="전화번호" required></td>
 							</tr>
