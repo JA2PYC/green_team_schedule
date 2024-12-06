@@ -20,6 +20,6 @@ public class ReservationController {
 		 mapper.insert(reservation); // Mapper 직접 호출
 		 rttr.addFlashAttribute("result", reservation.getRnum());
 	 return "redirect:/reservation/list"; // 등록 후 목록 페이지로 이동
-			 
+	//주석		 
 	 }
 }
