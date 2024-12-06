@@ -39,6 +39,7 @@
     
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
+
         var jsonData = [
             <c:forEach var="board" items="${list}" varStatus="status">
                 {
@@ -52,12 +53,33 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
         	locale: 'ko',
-            events: jsonData // jsonData 배열을 events로 전달
+        	
+        	
+/*             events: jsonData // jsonData 배열을 events로 전달
             ,
             eventClick: function(info) {
                 handleEventClick(info);
             }
-        });
+        }); */
+        
+        	  eventSources: [
+
+        		    // your event source
+        		    {
+        		      events: jsonData,
+        		      
+        		      color: 'black',     // an option!
+        		      textColor: 'yellow' // an option!
+        		    }
+
+        		    // any other event sources...
+
+        		  ],
+                  eventClick: function(info) {
+                      handleEventClick(info);
+                  }
+
+        		});
 
         calendar.render();
     });
