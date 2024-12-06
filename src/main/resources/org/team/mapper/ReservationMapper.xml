@@ -27,14 +27,16 @@
 	</select> -->
 	
 
-	<select id="read" parameterType="long" resultType="org.team.dto.ReservationDTO">
+	<select id="reservationRead" parameterType="long" resultType="org.team.dto.ReservationDTO">
 		select * from customer where rnum = #{rnum}
 	</select>
 	
 	<!-- Insert 예약 등록 쿼리 작성->DB에 예약 데이터 삽입 -->
 	<insert id="insert" parameterType="org.team.dto.ReservationDTO">
-		INSERT INTO customer (rdate, cname, cphone, address, content, visitdate)
-        VALUES (#{rdate}, #{cname}, #{cphone}, #{address}, #{content}, #{visitdate})
+	    INSERT INTO customer 
+	    (rdate, cname, cphone, address, category, model, issue, detail, visitdate, pinformation)
+	    VALUES 
+	    (#{rdate}, #{cname}, #{cphone}, #{address}, #{category}, #{model}, #{issue}, #{detail}, #{visitdate}, #{pinformation})
 	</insert>
 
 	
