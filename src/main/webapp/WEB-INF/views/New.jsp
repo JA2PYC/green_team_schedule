@@ -9,6 +9,8 @@
   <head>
     <meta charset='utf-8' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script
+	src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/locales/ko.global.js'></script>
     	    <style>
 	    
 			.fc-day-sun .fc-col-header-cell-cushion {
@@ -36,23 +38,31 @@
         var jsonData = [
             <c:forEach var="board" items="${list}" varStatus="status">
                 {
-                    "visitdate": "<c:out value="${board.visitdate}"/>",
-                    "cname": "<c:out value="${board.cname}"/>",
+                    "title": "<c:out value="${board.cname}"/>",
+                    "start": "<c:out value="${board.visitdate}"/>",
+                    "end": "<c:out value="${board.visitdate}"/>",
                 }
                 <c:if test="${!status.last}">,</c:if> <!-- 마지막 요소 뒤에 쉼표를 없애기 위해 조건 추가 -->
             </c:forEach>
         ];
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
-            	  events:jsonData
+        	locale: 'ko',
+            events: jsonData // jsonData 배열을 events로 전달
+            ,
+            eventClick: function(info) {
+                alert('Event: ' + info.event.title);
+                alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+                alert('View: ' + info.view.type);
 
+                // change the border color just for fun
+                info.el.style.borderColor = 'red';
+              }
+        });
 
-	
-	            // any other event sources...
-	
-	        });
         calendar.render();
-      });
+    });
+      
 
     </script>
   </head>
@@ -75,18 +85,7 @@
                      			</tr>
                      			</c:forEach>
                      			</table>
-                     			
-<%-- [
-    <c:forEach var="board" items="${list}" varStatus="status">
-        {
-            "visitdate": "<c:out value="${board.visitdate}"/>",
-            "cname": "<c:out value="${board.cname}"/>",
-            "rnum": <c:out value="${board.rnum}"/>
-        <c:if test="${!status.last}">,</c:if>
-        }
-    </c:forEach>
-] --%>
-<ul id="jsonDataList"></ul>
+<div id="jsonOutput"></div>
 <script>
     var jsonData = [
         <c:forEach var="board" items="${list}" varStatus="status">
@@ -108,11 +107,19 @@
         document.write("start: " + board.visitdate + "<br><br>");
     });
 
-    jsonData.forEach(function(board) {
-        var listItem = document.createElement("li");
-        listItem.textContent = "Visit Date: " + board.visitdate + ", CName: " + board.cname;
-        document.getElementById("jsonDataList").appendChild(listItem);
-    });
+    var jsonData = [
+        <c:forEach var="board" items="${list}" varStatus="status">
+            {
+                "visitdate": "<c:out value="${board.visitdate}"/>",
+                "cname": "<c:out value="${board.cname}"/>"
+            }
+            <c:if test="${!status.last}">,</c:if> <!-- 마지막 요소 뒤에 쉼표를 없애기 위해 조건 추가 -->
+        </c:forEach>
+    ];
+
+    // JSON 데이터를 문자열로 변환하여 HTML 요소에 출력
+    var jsonString = JSON.stringify(jsonData);
+    document.getElementById("jsonOutput").textContent = jsonString;
 </script>
 
   </body>
