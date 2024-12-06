@@ -10,10 +10,32 @@
 	]]>
 	</select>
 	
+	
+<!-- 	<resultMap id="reservationMap" type="ReservationDTO">
+	    <id property="rnum" column="RNUM" />
+		    <result property="rdate" column="RDATE" />
+		    <result property="cname" column="CNAME" />
+		    <result property="cphone" column="CPHONE" />
+		    <result property="address" column="ADDRESS" />
+		    <result property="content" column="CONTENT" />
+		    <result property="visitdate" column="VISITDATE" />
+   </resultMap>
+  
+  
+  	<select id="reservationRead" resultMap="reservationMap">
+		select * from customer where rnum = #{rnum}
+	</select> -->
+	
+
+	<select id="read" parameterType="long" resultType="org.team.dto.ReservationDTO">
+		select * from customer where rnum = #{rnum}
+	</select>
+	
 	<!-- Insert 예약 등록 쿼리 작성->DB에 예약 데이터 삽입 -->
 	<insert id="insert" parameterType="org.team.dto.ReservationDTO">
 		INSERT INTO customer (rdate, cname, cphone, address, content, visitdate)
         VALUES (#{rdate}, #{cname}, #{cphone}, #{address}, #{content}, #{visitdate})
 	</insert>
+
 	
 </mapper>

@@ -1,6 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@page import="java.util.List"%>
+<%@page import="org.team.dto.ReservationDTO"%>
+<%@page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -30,65 +33,22 @@
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
+        var jsonData = [
+            <c:forEach var="board" items="${list}" varStatus="status">
+                {
+                    "visitdate": "<c:out value="${board.visitdate}"/>",
+                    "cname": "<c:out value="${board.cname}"/>",
+                }
+                <c:if test="${!status.last}">,</c:if> <!-- 마지막 요소 뒤에 쉼표를 없애기 위해 조건 추가 -->
+            </c:forEach>
+        ];
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
-/*             events : [
-                        {
-                        title: '물주기',
-                        start: '2024-12-08'
-                        },
-                        {
-                        title: '뚜껑 닫기',
-                        start: '2024-12-15',
-                        end: '2024-12-18'
-                        }
-                    ]
-            }); */
-        
-/* 	        events: [
-	            {
-	              title  : 'event1',
-	              start  : '2024-12-09'
-	            },
-	            {
-	              title  : 'event2',
-	              start  : '2024-12-21',
-	              end    : '2024-12-23'
-	            },
-	            {
-	              title  : 'event3',
-	              start  : '2024-12-12T12:30:00',
-	              allDay : false // will make the time show
-	            }
-	          ]
-	        }); */
-      
-	        eventSources: [
-	
-	            // your event source
-	            {
-	              events: [ // put the array in the `events` property
-	                {
-	                  title  : '김남영',
-	                  start  : '2024-12-05'
-	                },
-	                {
-	                  title  : 'event2',
-	                  start  : '2024-12-21',
-	                  end    : '2024-12-27'
-	                },
-	                {
-	                  title  : 'event3',
-	                  start  : '2024-12-15T12:30:00',
-	                }
-	              ],
-	              color: 'black',     // an option!
-	              textColor: 'yellow' // an option!
-	            }
+            	  events:jsonData
+
+
 	
 	            // any other event sources...
-	
-	          ]
 	
 	        });
         calendar.render();
@@ -98,12 +58,62 @@
   </head>
   <body>
     <div id='calendar'></div>
-                         			<c:forEach items="${list}" var="board">
+    <h1>테스트용 텍스트</h1>
+                                <table border="1" class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                    	<th>방문날짜</th>
+                                        <th>이름</th>
+                                        <th>번호</th>
+                                    </tr>
+                                </thead>
+                         		<c:forEach items="${list}" var="board">
                      			<tr>
-                     				<td><c:out value="${ board.cname}"/></td>
-                     				 <td><a href='/board/get?bno=<c:out value="${board.bno}"/>'>
-                     				 <c:out value="${board.rnum}"/></a></td>
+                     				<td><c:out value="${board.visitdate}"/></td>
+                     				<td><c:out value="${board.cname}"/></td>
+                     				<td><c:out value="${board.rnum}"/></td>
                      			</tr>
                      			</c:forEach>
+                     			</table>
+                     			
+<%-- [
+    <c:forEach var="board" items="${list}" varStatus="status">
+        {
+            "visitdate": "<c:out value="${board.visitdate}"/>",
+            "cname": "<c:out value="${board.cname}"/>",
+            "rnum": <c:out value="${board.rnum}"/>
+        <c:if test="${!status.last}">,</c:if>
+        }
+    </c:forEach>
+] --%>
+<ul id="jsonDataList"></ul>
+<script>
+    var jsonData = [
+        <c:forEach var="board" items="${list}" varStatus="status">
+            {
+                "visitdate": "<c:out value="${board.visitdate}"/>",
+                "cname": "<c:out value="${board.cname}"/>",
+            }
+            <c:if test="${!status.last}">,</c:if> <!-- 마지막 요소 뒤에 쉼표를 없애기 위해 조건 추가 -->
+        </c:forEach>
+    ];
+
+    // JSON 데이터 출력 (콘솔에 출력)
+    console.log(jsonData);
+    
+    // 자바스크립트에서 JSON 데이터로 처리할 수 있음
+    jsonData.forEach(function(board) {
+
+        document.write("title: " + board.cname + "<br>");
+        document.write("start: " + board.visitdate + "<br><br>");
+    });
+
+    jsonData.forEach(function(board) {
+        var listItem = document.createElement("li");
+        listItem.textContent = "Visit Date: " + board.visitdate + ", CName: " + board.cname;
+        document.getElementById("jsonDataList").appendChild(listItem);
+    });
+</script>
+
   </body>
 </html>
