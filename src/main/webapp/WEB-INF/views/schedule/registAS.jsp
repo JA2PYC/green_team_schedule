@@ -30,8 +30,8 @@
 						<tbody>
 							<tr>
 								<th><label for="customerName">성명</label></th>
-								<td><input type="text" name="canme"
-									id="customerName" placeholder="성명" required></td>
+								<td><input type="text" name="canme" id="customerName"
+									placeholder="성명" required></td>
 							</tr>
 							<tr>
 								<th><label for="customerPhone1">전화번호</label></th>
@@ -46,14 +46,16 @@
 								</select> - <input type="tel" name="cphone2" id="customerPhone2"
 									class="phone" min="0000" max="9999" minlength="3" maxlength="4"
 									step="1" placeholder="전화번호" required> - <input
-									type="tel" name="cphone3" id="customerPhone3"
-									class="phone" min="0000" max="9999" minlength="4" maxlength="4"
-									step="1" placeholder="전화번호" required></td>
+									type="tel" name="cphone3" id="customerPhone3" class="phone"
+									min="0000" max="9999" minlength="4" maxlength="4" step="1"
+									placeholder="전화번호" required></td>
 							</tr>
+							<!-- DTO 설정중 -->
 							<tr>
 								<th><label for="searchAddress">주 소</label></th>
 								<td class="customerAddress">
-									<button type="button" id="searchAddress" class="searchAddress btn btn-danger float-left">주소검색</button>
+									<button type="button" id="searchAddress"
+										class="searchAddress btn btn-danger float-left">주소검색</button>
 									<div>
 										<input type="text" name="addressPostcode" id="addressPostcode"
 											class="addressPostcode" placeholder="우편번호"> <input
@@ -82,7 +84,8 @@
 							</tr>
 							<tr>
 								<th><label for="productId">모델명</label></th>
-								<td><input type="text" name="productId" id="productId" class="productId" placeholder="모델명"></td>
+								<td><input type="text" name="productId" id="productId"
+									class="productId" placeholder="모델명"></td>
 							</tr>
 							<tr>
 								<th><label for="troubleType">고장 증상</label></th>
@@ -121,7 +124,8 @@
 						</tbody>
 					</table>
 					<div>
-						<button type="submit" class="btn btn-danger float-left">AS 접수하기</button>
+						<button type="submit" class="btn btn-danger float-left">AS
+							접수하기</button>
 					</div>
 				</form>
 			</div>
