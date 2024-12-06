@@ -11,15 +11,15 @@ import org.team.mapper.ReservationMapper;
 public class ReservationController {
 	
 	 @Autowired
-	 private ReservationMapper mapper; //Mapper직접 사용
+	 private ReservationMapper mapper; //의존성 주입 Mapper직접 사용
 	 
-	 //예약 등록 처리
+	 //예약 등록 처리(사용자 예약정보를 ReservationDTO객체로 받음-> DB저장->redirect) 
 	 @PostMapping("/reservation/register")
 	 public String register(ReservationDTO reservation, RedirectAttributes rttr ) {
 		 System.out.println("register: " + reservation);
 		 mapper.insert(reservation); // Mapper 직접 호출
 		 rttr.addFlashAttribute("result", reservation.getRnum());
 	 return "redirect:/reservation/list"; // 등록 후 목록 페이지로 이동
-	//주석		 
+			 
 	 }
 }
