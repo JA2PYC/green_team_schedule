@@ -14,8 +14,6 @@ public interface ReservationMapper {
 		
 		public ReservationDTO reservationRead(Long rnum);
 		
-		// @Insert(INSERT INTO customer (rdate, cname, cphone, address, content, visitdate)
-        // VALUES (#{rdate}, #{cname}, #{cphone}, #{address}, #{content}, #{visitdate})
 		public void insert(ReservationDTO reservation); //예약 데이터 삽입
 		
 }
