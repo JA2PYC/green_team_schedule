@@ -48,6 +48,6 @@ public class ReservationController {
         rttr.addFlashAttribute("message", "A/S 접수가 완료되었습니다.");
         
         // 목록 페이지로 리다이렉트
-        return "redirect:/schedule/list";
+        return "redirect:/schedule/list"; //push
   }
 }
