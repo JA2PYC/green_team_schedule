@@ -25,7 +25,7 @@
 			<hr>
 			<div class="register">
 				<form action="/schedule/registProcess">
-					<table>
+					<table class="table table-hover">
 						<caption>고객 정보 입력</caption>
 						<tbody>
 							<tr>
@@ -53,7 +53,7 @@
 							<tr>
 								<th><label for="searchAddress">주 소</label></th>
 								<td class="customerAddress">
-									<button type="button" class="searchAddress" id="searchAddress">주소검색</button>
+									<button type="button" id="searchAddress" class="searchAddress btn btn-danger float-left">주소검색</button>
 									<div>
 										<input type="text" name="addressPostcode" id="addressPostcode"
 											class="addressPostcode" placeholder="우편번호"> <input
@@ -68,7 +68,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<table>
+					<table class="table">
 						<caption>제품 및 증상 입력</caption>
 						<tbody>
 							<tr>
@@ -99,7 +99,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<table>
+					<table class="table">
 						<caption>희망 방문 일시</caption>
 						<tbody>
 							<tr>
@@ -110,18 +110,18 @@
 							</tr>
 						</tbody>
 					</table>
-					<table>
+					<table class="table">
 						<caption>이용약관</caption>
 						<tbody>
 							<tr>
-								<th>개인정보 수집 이용 및 제3자 제공 동의서</th>
+								<th>개인정보 수집 이용</th>
 								<td><input type="checkbox" name="term" id="term"><label
 									for="term">개인정보 수집 이용 및 제3자 제공 동의서</label></td>
 							</tr>
 						</tbody>
 					</table>
 					<div>
-						<button type="submit">AS 접수하기</button>
+						<button type="submit" class="btn btn-danger float-left">AS 접수하기</button>
 					</div>
 				</form>
 			</div>

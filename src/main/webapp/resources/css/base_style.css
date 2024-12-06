@@ -37,7 +37,34 @@ blockquote:before, blockquote:after, q:before, q:after {
 	content: none;
 }
 
+main {
+	max-width: 1280px;
+	margin: auto;
+}
+
 table {
+	width: 100%;
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+caption {
+	color: black;
+	caption-side: top;
+	text-align: left;
+	padding-bottom: 10px;
+	font-weight: bold;
+}
+
+input {
+	border: none;
+/* 	border-bottom: 1px solid black; */
+}
+
+select {
+	border: none;
+}
+
+textarea {
+	width: 100%;
 }

@@ -31,6 +31,8 @@ $(document).ready(() => {
 		]
 	});
 	calendar.render();
-
+	
+	
+	console.log(test);
 
 });
