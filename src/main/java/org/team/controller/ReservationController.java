@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.team.dto.ReservationDTO;
 import org.team.mapper.ReservationMapper;
@@ -32,6 +33,13 @@ public class ReservationController {
 		 * 
 		 * System.out.println(json);
 		 */
+	}
+	
+	@GetMapping({"/read"})
+	public void get(@RequestParam("bno") Long bno, Model model) {
+		
+		System.out.println("/read");
+		model.addAttribute("board", mapper.reservationRead(bno));
 	}
 	
 	//예약 등록 처리(사용자 예약정보를 ReservationDTO객체로 받음-> DB저장->redirect) 

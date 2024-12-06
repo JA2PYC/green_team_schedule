@@ -33,6 +33,10 @@
 	    </style>
     <script>
 
+    var selectedEvent = null;
+    var mouseX = undefined;
+    var mouseY = undefined;
+    
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var jsonData = [
@@ -51,23 +55,62 @@
             events: jsonData // jsonData 배열을 events로 전달
             ,
             eventClick: function(info) {
-                alert('Event: ' + info.event.title);
-                alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-                alert('View: ' + info.view.type);
-
-                // change the border color just for fun
-                info.el.style.borderColor = 'red';
-              }
+                handleEventClick(info);
+            }
         });
 
         calendar.render();
     });
       
+      // 이벤트 클릭 시 상세 정보 표시
+      function handleEventClick(info) {
+          selectedEvent = info.event;
+          mouseX = info.jsEvent.clientX;
+          mouseY = info.jsEvent.clientY;
+
+          // 이벤트 상세 정보를 modal에 표시
+          document.getElementById('eventTitle').innerText = selectedEvent.title;
+
+          // 날짜 및 시간을 시간대 설정으로 포맷
+          const startDate = new Date(selectedEvent.start);
+          const endDate = new Date(selectedEvent.end);
+
+          const startTime = startDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Seoul' });
+          const endTime = endDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Seoul' });
+
+          document.getElementById('eventTime').innerText = startTime + " ~ " + endTime;
+
+          // 장소 (여기서 장소는 extendedProps로 가정)
+          document.getElementById('eventLocation').innerText = selectedEvent.extendedProps.location || "미정";
+
+          // 모달을 화면에 표시
+          var eventDetails = document.getElementById('eventDetails');
+          eventDetails.style.left = mouseX + 'px';
+          eventDetails.style.top = mouseY + 'px';
+          eventDetails.style.display = 'block';
+      }
+
+      // 모달 닫기
+      function closeEventDetails() {
+          var eventDetails = document.getElementById('eventDetails');
+          eventDetails.style.display = 'none';
+      }
 
     </script>
   </head>
   <body>
     <div id='calendar'></div>
+    
+    <!-- Event Details Modal (Initially Hidden) -->
+    <div id="eventDetails" style="position: absolute; background: white; padding: 20px; border: 1px solid #ccc; display: none; z-index:1000;">
+        <h2 id="eventTitle"></h2>
+        <div id="eventTimePlace">
+            <p>시간: <span id="eventTime"></span></p>
+            <p>장소: <span id="eventLocation"></span></p>
+        </div>
+        <button onclick="closeEventDetails()">닫기</button>
+    </div>
+    
     <h1>테스트용 텍스트</h1>
                                 <table border="1" class="table table-striped table-bordered table-hover">
                                 <thead>

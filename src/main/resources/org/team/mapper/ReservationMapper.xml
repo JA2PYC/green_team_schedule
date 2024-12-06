@@ -27,7 +27,7 @@
 	</select> -->
 	
 
-	<select id="read" parameterType="long" resultType="org.team.dto.ReservationDTO">
+	<select id="reservationRead" parameterType="long" resultType="org.team.dto.ReservationDTO">
 		select * from customer where rnum = #{rnum}
 	</select>
 	
