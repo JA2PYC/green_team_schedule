@@ -53,3 +53,5 @@ spring-boot-devtools
 
 # Java compiled files
 *.class
+
+.factorypath
