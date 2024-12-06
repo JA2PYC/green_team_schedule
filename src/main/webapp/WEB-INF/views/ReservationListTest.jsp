@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -6,29 +8,30 @@
     <title>게시판 목록</title>
 </head>
 <body>
-    <h1>게시판 목록</h1>
+    <h1>예약 목록</h1>
+
     <table border="1">
         <thead>
             <tr>
                 <th>번호</th>
-                <th>제목</th>
+                <th>예약 날짜</th>
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>주소</th>
                 <th>내용</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>상세보기</th>
+                <th>방문 날짜</th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="reservation" items="${list}">
+            <c:forEach var="reservation" items="${reservations}">
                 <tr>
                     <td>${reservation.rnum}</td>
-                    <td>${reservation.cname}</td>
-                    <td>${reservation.content}</td>
-                    <td>${reservation.cphone}</td>
                     <td>${reservation.rdate}</td>
-                    <td>
-                        <a href="/reservation/get?rnum=${reservation.rnum}">상세보기</a>
-                    </td>
+                    <td>${reservation.cname}</td>
+                    <td>${reservation.cphone}</td>
+                    <td>${reservation.address}</td>
+                    <td>${reservation.content}</td>
+                    <td>${reservation.visitdate}</td>
                 </tr>
             </c:forEach>
         </tbody>
