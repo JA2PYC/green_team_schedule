@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+header.ja2pyc {
+	color: #f0f0f0;
+	background-color: #151535;
+	padding: 1rem;
+	margin: 0 0 1rem 0;
+}
+
+header.ja2pyc .header_title {
+	font-size: 2rem;
+}
