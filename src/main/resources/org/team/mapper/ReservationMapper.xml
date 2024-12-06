@@ -9,23 +9,6 @@
 	select * from customer where rnum > 0
 	]]>
 	</select>
-	
-	
-<!-- 	<resultMap id="reservationMap" type="ReservationDTO">
-	    <id property="rnum" column="RNUM" />
-		    <result property="rdate" column="RDATE" />
-		    <result property="cname" column="CNAME" />
-		    <result property="cphone" column="CPHONE" />
-		    <result property="address" column="ADDRESS" />
-		    <result property="content" column="CONTENT" />
-		    <result property="visitdate" column="VISITDATE" />
-   </resultMap>
-  
-  
-  	<select id="reservationRead" resultMap="reservationMap">
-		select * from customer where rnum = #{rnum}
-	</select> -->
-	
 
 	<select id="reservationRead" parameterType="long" resultType="org.team.dto.ReservationDTO">
 		select * from customer where rnum = #{rnum}
