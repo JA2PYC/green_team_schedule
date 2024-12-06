@@ -50,7 +50,7 @@
 									min="0000" max="9999" minlength="4" maxlength="4" step="1"
 									placeholder="전화번호" required></td>
 							</tr>
-							<!-- DTO 설정중 -->
+							<!-- DTO 설정중 확인 -->
 							<tr>
 								<th><label for="searchAddress">주 소</label></th>
 								<td class="customerAddress">
