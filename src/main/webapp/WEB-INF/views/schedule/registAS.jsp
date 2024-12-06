@@ -24,8 +24,8 @@
 			<h1>AS 접수하기</h1>
 			<hr>
 			<div class="register">
-				<form action="/schedule/registProcess">
-					<table class="table table-hover">
+				<form action="/schedule/registProcess" method="post">
+					<table>
 						<caption>고객 정보 입력</caption>
 						<tbody>
 							<tr>
