@@ -1,7 +1,7 @@
 package org.team.dto;
 
 public class ReservationDTO {
-	private String rnum;
+	private Long rnum;
 	private String rdate;
 	private String cname;
 	private String cphone;
@@ -9,10 +9,10 @@ public class ReservationDTO {
 	private String content;
 	private String visitdate;
 	
-	public String getRnum() {
+	public Long getRnum() {
 		return rnum;
 	}
-	public void setRnum(String rnum) {
+	public void setRnum(Long rnum) {
 		this.rnum = rnum;
 	}
 	public String getRdate() {

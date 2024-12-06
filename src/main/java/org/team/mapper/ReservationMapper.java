@@ -1,5 +1,6 @@
 package org.team.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -10,4 +11,6 @@ public interface ReservationMapper {
 
 		// @Select("select * from customer where rnum > 0")
 		public List<ReservationDTO> getList();
+		
+		public ReservationDTO reservationRead(Long rnum);
 }
