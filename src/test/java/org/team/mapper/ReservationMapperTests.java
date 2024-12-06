@@ -29,7 +29,7 @@ public class ReservationMapperTests {
         reservation.setContent("수리");
         reservation.setVisitdate("2024-12-07 14:00:00");
         
-        //insert 테스트
+    //insert 등록 테스트
         mapper.insert(reservation);
         System.out.println("Insert Result: " + reservation);
 	}
