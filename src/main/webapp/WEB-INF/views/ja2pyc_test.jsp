@@ -1,19 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>JA2PYC</title>
+<title>Test Page</title>
+<!-- Head Requires // 헤더 공통 스크립트 -->
+<jsp:include page="/WEB-INF/views/includes/headScript.jsp"></jsp:include>
+
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 	<main>
-		<h1>JA2PYC</h1>
-		<div>키 저장후 커밋 푸시</div>
-		<div>키 저장후 커밋 푸시</div>
-		<div>키 저장후 커밋 푸시</div>
-		<div>키 저장후 커밋 푸시</div>
-		<div>키 저장후 커밋 푸시</div>
+		<div class="testPage">
+			<h1>Test Page</h1>
+			<hr>
+			<div>깃 클론 테스트 확인</div>
+		</div>
 	</main>
+	<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
 </body>
 </html>
