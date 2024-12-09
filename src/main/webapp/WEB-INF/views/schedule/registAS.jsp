@@ -107,7 +107,7 @@
 						<tbody>
 							<tr>
 								<td>
-									<div class="calendar"></div>
+									<div class="calendar"><input type="date" name="visitdate" value="2024-12-05"></div>
 									<div class="calendarTime"></div>
 								</td>
 							</tr>
