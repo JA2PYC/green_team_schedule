@@ -54,7 +54,7 @@ public class ReservationController {
 	            "접수 날짜: " + reservation.getRdate() + "\n" +
 	            "모델명: " + reservation.getModel();
 	    smsService.sendSms(cphone, messageContent);
-	    
+	    //
 	    // 성공 메시지 전달
 	    rttr.addFlashAttribute("message", "A/S 접수가 완료되었습니다. 고객님의 휴대전화번호로 접수정보가 전송되었습니다.");
 
