@@ -23,7 +23,7 @@
 /* 	    	.fc-daygrid-day .fc-daygrid-day-number {	// 일요일, 토요일 제외
 	    		color: black;
 	    	} */
-	    	
+	    		
 	    	.fc-daygrid-day.fc-day-sun .fc-daygrid-day-number{ 		
 	    		color: red;
 	    	}
@@ -31,6 +31,7 @@
 	    		color: blue;
 	    	}
 	    </style>
+	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e1ec5378979a9f3ffe97d798bdcd05e1&libraries=services"></script>
     <script>
 
     var selectedEvent = null;
@@ -56,14 +57,6 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
         	locale: 'ko',
-        	
-        	
-/*             events: jsonData // jsonData 배열을 events로 전달
-            ,
-            eventClick: function(info) {
-                handleEventClick(info);
-            }
-        }); */
         
         	  eventSources: [
 
@@ -87,6 +80,55 @@
         calendar.render();
     });
       
+   // 카카오 지도 로드 함수
+      function loadMap(location) {
+          var mapContainer = document.getElementById('map');
+          mapContainer.innerHTML = ''; // 이전 지도 내용 초기화
+
+          var geocoder = new kakao.maps.services.Geocoder();
+          var mapOption = {
+              center: new kakao.maps.LatLng(33.450701, 126.570667), // 기본 위치
+              level: 3
+          };
+
+          // 지도 객체 미리 생성
+          var map = new kakao.maps.Map(mapContainer, mapOption);
+
+          // 주소-좌표 변환을 위한 카카오 지도 API 호출
+          geocoder.addressSearch(location, function(result, status) {
+              if (status === kakao.maps.services.Status.OK) {
+                  var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                  // 새로운 지도 생성 및 업데이트
+                  // 지도 초기화 후 약간의 지연을 두고 지도를 다시 렌더링
+            	  setTimeout(function() {
+                  map.setCenter(coords);
+
+                  // 마커 표시
+                  var marker = new kakao.maps.Marker({
+                      map: map,
+                      position: coords
+                  });
+
+                  // 인포윈도우 표시
+                  var infowindow = new kakao.maps.InfoWindow({
+                      content: '<div style="width:150px;text-align:center;padding:6px 0;">' + location + '</div>'
+                  });
+                  infowindow.open(map, marker);
+                  
+                  // 지도 레이아웃 갱신
+                  map.relayout(); // 레이아웃 다시 계산
+
+                  // 지도 로딩 완료 후 모달 표시
+                  var eventDetails = document.getElementById('eventDetails');
+                  eventDetails.style.display = 'block';
+              	}, 100); 
+              } else {
+                  console.error("주소 변환 실패: " + status);
+              }
+          });
+      }
+      
       // 이벤트 클릭 시 상세 정보 표시
       function handleEventClick(info) {
           selectedEvent = info.event;
@@ -104,20 +146,58 @@
           const endTime = endDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Seoul' });
 
           document.getElementById('eventTime').innerText = startTime + " ~ " + endTime;
-
-          // 장소 (여기서 장소는 extendedProps로 가정)
-          /* document.getElementById('eventLocation').innerText = selectedEvent.extendedProps.location || "미정"; */
-          
+         
           // 장소 (여기서 장소는 extendedProps로 가정)
 		  document.getElementById('eventLocation').innerText = selectedEvent.extendedProps.location || "미정";
 
+		  // 카카오 지도 로드
+		  loadMap(selectedEvent.extendedProps.location);
+          
           // 모달을 화면에 표시
           var eventDetails = document.getElementById('eventDetails');
           eventDetails.style.left = mouseX + 'px';
           eventDetails.style.top = mouseY + 'px';
           eventDetails.style.display = 'block';
       }
+      
+/*    // 카카오 지도 로드 함수
+      function loadMap(location) {
+          var mapContainer = document.getElementById('map');
+          mapContainer.innerHTML = ''; // 이전 지도 내용 초기화
 
+          var geocoder = new kakao.maps.services.Geocoder();
+
+          // 주소-좌표 변환을 위한 카카오 지도 API 호출
+          geocoder.addressSearch(location, function(result, status) {
+              if (status === kakao.maps.services.Status.OK) {
+                  var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                  // 새로운 지도 생성
+                  var mapOption = {
+                      center: coords,
+                      level: 3
+                  };
+
+                  var map = new kakao.maps.Map(mapContainer, mapOption);
+
+                  // 마커 표시
+                  var marker = new kakao.maps.Marker({
+                      map: map,
+                      position: coords
+                  });
+
+                  // 인포윈도우 표시
+                  var infowindow = new kakao.maps.InfoWindow({
+                      content: '<div style="width:150px;text-align:center;padding:6px 0;">' + location + '</div>'
+                  });
+                  infowindow.open(map, marker);
+
+                  // 지도의 중심을 결과값으로 받은 위치로 이동시킴
+                  map.setCenter(coords);
+              }
+          });
+      }
+ */
       // 모달 닫기
       function closeEventDetails() {
           var eventDetails = document.getElementById('eventDetails');
@@ -127,19 +207,75 @@
     </script>
   </head>
   <body>
-    <div id='calendar'></div>
+  
+      <div id='calendar'></div><br>
+  
+<!--   <p style="margin-top:-12px">
+    <em class="link">
+        <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
+            혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
+        </a>
+    </em>
+</p>
+<div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e1ec5378979a9f3ffe97d798bdcd05e1&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});    
+</script> -->
+  
+
     
     <!-- Event Details Modal (Initially Hidden) -->
-    <div id="eventDetails" style="position: absolute; background: white; padding: 20px; border: 1px solid #ccc; display: none; z-index:1000;">
+    <div id="eventDetails" style="position: absolute; background: white; padding: 20px; border: 1px solid #ccc; display: none; width:500px; z-index:1000;">
         <h2 id="eventTitle"></h2>
         <div id="eventTimePlace">
             <p>시간: <span id="eventTime"></span></p>
-            <p>장소: <span id="eventLocation"></span></p>
+            <p>주소: <span id="eventLocation"></span></p>
+            <p>세부주소: <span id="eventLocation"></span></p>
+            <p>
+            위치: <div id="map" style="width:100%;height:350px;"></div> <!-- 카카오 지도 표시 영역 -->
+        	</p>
         </div>
         <button onclick="closeEventDetails()">닫기</button>
     </div>
     
-    <h1>테스트용 텍스트</h1>
+<%--     <h1>테스트용 텍스트</h1>
                                 <table border="1" class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -191,7 +327,7 @@
     // JSON 데이터를 문자열로 변환하여 HTML 요소에 출력
     var jsonString = JSON.stringify(jsonData);
     document.getElementById("jsonOutput").textContent = jsonString;
-</script>
+</script> --%>
 
   </body>
 </html>
