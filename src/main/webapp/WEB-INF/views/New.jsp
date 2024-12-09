@@ -45,7 +45,10 @@
                 {
                     "title": "<c:out value="${board.cname}"/>",
                     "start": "<c:out value="${board.visitdate}"/>",
-                    "end": "<c:out value="${board.visitdate}"/>",
+                    "end": "<c:out value="${board.visitdate_end}"/>",
+                    "extendedProps": {
+                    	"location": "<c:out value="${board.address}"/>" // DB에서 가져온 장소 값
+                    }
                 }
                 <c:if test="${!status.last}">,</c:if> <!-- 마지막 요소 뒤에 쉼표를 없애기 위해 조건 추가 -->
             </c:forEach>
@@ -95,15 +98,18 @@
 
           // 날짜 및 시간을 시간대 설정으로 포맷
           const startDate = new Date(selectedEvent.start);
-          const endDate = new Date(selectedEvent.end);
-
+          const endDate = new Date(selectedEvent.end + 60 * 60 * 1000);
+          
           const startTime = startDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Seoul' });
           const endTime = endDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Seoul' });
 
           document.getElementById('eventTime').innerText = startTime + " ~ " + endTime;
 
           // 장소 (여기서 장소는 extendedProps로 가정)
-          document.getElementById('eventLocation').innerText = selectedEvent.extendedProps.location || "미정";
+          /* document.getElementById('eventLocation').innerText = selectedEvent.extendedProps.location || "미정"; */
+          
+          // 장소 (여기서 장소는 extendedProps로 가정)
+		  document.getElementById('eventLocation').innerText = selectedEvent.extendedProps.location || "미정";
 
           // 모달을 화면에 표시
           var eventDetails = document.getElementById('eventDetails');
@@ -151,7 +157,7 @@
                      			</c:forEach>
                      			</table>
 <div id="jsonOutput"></div>
-<script>
+0.............<script>
     var jsonData = [
         <c:forEach var="board" items="${list}" varStatus="status">
             {

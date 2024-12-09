@@ -12,7 +12,11 @@ import org.team.dto.ReservationDTO;
 public class ReservationMapperTests {
 	
 	@Autowired //의존성 주입 ReservationMapper.java파일의 인터페이스
+	private Ny_ReservationMapper Ny_mapper;
+	
+	@Autowired //의존성 주입 ReservationMapper.java파일의 인터페이스
 	private ReservationMapper mapper;
+	
 	/*
 	@Test
 	public void testGetList() {//예약 데이터 목록 출력 테스트 성공
@@ -23,7 +27,7 @@ public class ReservationMapperTests {
 	@Test
 	public void testRead() {
 		// 존재하는 게시물 1번으로 테스트
-		ReservationDTO reservation = mapper.reservationRead(1L);
+		ReservationDTO reservation = Ny_mapper.reservationRead(1L);
 		System.out.println(reservation);
 	}
 	
