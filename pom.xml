@@ -223,6 +223,14 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Twilio java라이브러리 문자서비스 -->
+		<dependency>
+		    <groupId>com.twilio.sdk</groupId>
+		    <artifactId>twilio</artifactId>
+		    <version>8.35.0</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<plugins>

@@ -7,17 +7,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.team.dto.ReservationDTO;
 import org.team.mapper.ReservationMapper;
+import org.team.smsservice.SmsService;
 
 
 @Controller
 // @RequestMapping("/board/*")
+
 public class ReservationController {
 
 	@Autowired
 	private ReservationMapper mapper;
 	
+	@Autowired
+    private SmsService smsService; // SmsService 의존성주입
 
-	//예약 등록 처리(사용자 예약정보를 ReservationDTO객체로 받음-> DB저장->redirect)
 	// registAS.jsp화면의 AS접수하기 버튼 클릭 시 예약 데이터 등록 처리
 	@PostMapping("/schedule/registProcess")
 	public String register(
@@ -41,14 +44,21 @@ public class ReservationController {
 	    // 디버깅용 로그 출력
 	    System.out.println("Received Reservation Data: " + reservation);
 	    System.out.println("Received CNAME: " + reservation.getCname());
+	    
 	    // 예약 데이터 삽입
 	    mapper.insert(reservation);
-
+	    
+	    // SMS 발송
+	    String messageContent = "안녕하세요, " + reservation.getCname() + "님. " +
+	            "귀하의 A/S 접수가 완료되었습니다.\n" +
+	            "접수 날짜: " + reservation.getRdate() + "\n" +
+	            "모델명: " + reservation.getModel();
+	    smsService.sendSms(cphone, messageContent);
+	    
 	    // 성공 메시지 전달
-	    rttr.addFlashAttribute("message", "A/S 접수가 완료되었습니다.");
+	    rttr.addFlashAttribute("message", "A/S 접수가 완료되었습니다. 고객님의 휴대전화번호로 접수정보가 전송되었습니다.");
 
 	    // 목록 페이지로 리다이렉트
 	    return "redirect:/schedule/list";
 	}
 }
-
