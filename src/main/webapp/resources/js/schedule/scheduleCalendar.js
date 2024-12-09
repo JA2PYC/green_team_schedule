@@ -1,9 +1,14 @@
+// 데이터 형식변환
 function transformData(response) {
 	// response 데이터를 FullCalendar 형식으로 변환
 	return response.map(item => ({
 		id: item.rnum, // 고유 ID
-		title: `${item.cname} (${item.cphone})`, // 이벤트 제목: 고객 이름과 전화번호
-		start: item.rdate, // 시작 날짜 및 시간
+		title: item.cname, // 이벤트 제목: 고객 이름과 전화번호
+		start: item.visitdate, // 시작 날짜 및 시간
+		end: item.visitdate_end,
+		extendedProps: {
+			location: item.address, // 장소 정보 추가
+		},
 		description: `
             <strong>주소:</strong> ${item.address}<br>
             <strong>전화:</strong> ${item.cphone}<br>
@@ -12,6 +17,7 @@ function transformData(response) {
 	}));
 }
 
+// Full Calendar 호출
 function callCalendar(response) {
 
 	// 데이터 변환
@@ -38,6 +44,8 @@ function callCalendar(response) {
 	calendar.render();
 }
 
+// AJAX 요청
+
 function ajaxCalendar() {
 	// 오늘 날짜를 yyyy-MM-dd 형식으로 생성
 	const today = new Date().toISOString().slice(0, 10);
@@ -47,6 +55,7 @@ function ajaxCalendar() {
 		url: '/schedule/calendar',
 		type: 'POST',
 		data: { today: today }, // 파라미터 포함
+		dataType: 'json',
 		success: function(response) {
 			console.log('Success:', response);
 			// 성공 시 처리 로직 추가
@@ -59,11 +68,11 @@ function ajaxCalendar() {
 	});
 }
 
-
+// DOM 로드 완료시 실행
 $(document).ready(() => {
 	function initialize() {
 		ajaxCalendar();
-		eventHandler();
+		// eventHandler();
 	}
 
 	function eventHandler() {
