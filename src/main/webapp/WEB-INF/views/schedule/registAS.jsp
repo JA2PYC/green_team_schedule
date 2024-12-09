@@ -46,9 +46,9 @@
 								</select> - <input type="tel" name="customerPhone2" id="customerPhone2"
 									class="phone" min="0000" max="9999" minlength="3" maxlength="4"
 									step="1" placeholder="전화번호" required> - <input
-									type="tel" name="customerPhone3" id="customerPhone3" class="phone"
-									min="0000" max="9999" minlength="4" maxlength="4" step="1"
-									placeholder="전화번호" required></td>
+									type="tel" name="customerPhone3" id="customerPhone3"
+									class="phone" min="0000" max="9999" minlength="4" maxlength="4"
+									step="1" placeholder="전화번호" required></td>
 							</tr>
 							<!-- DTO 설정중 확인 -->
 							<tr>
@@ -98,7 +98,8 @@
 							</tr>
 							<tr>
 								<th><label for="troubleDetails">세부증상</label></th>
-								<td><textarea name="detail" id="troubleDetails" rows="10" placeholder="세부증상"></textarea></td>
+								<td><textarea name="detail" id="troubleDetails" rows="10"
+										placeholder="세부증상"></textarea></td>
 							</tr>
 						</tbody>
 					</table>
@@ -107,8 +108,14 @@
 						<tbody>
 							<tr>
 								<td>
-									<div class="calendar"><input type="date" name="visitdate" value="2024-12-05"></div>
-									<div class="calendarTime"></div>
+									<div class="calendar">
+<!-- 										<input type="datetime-local" id="visitdate" -->
+<!-- 											name="visitdate" value="2024-12-15T09:00"/> -->
+										<input type="date" name="visitdate" value="2024-12-15" />
+									</div>
+									<div class="calendarTime">
+									
+									</div>
 								</td>
 							</tr>
 						</tbody>
