@@ -24,6 +24,11 @@ body {
 	line-height: 1;
 }
 
+a, a:link, a:hover, a:visited {
+	text-decoration: none;
+	color: black;
+}
+
 ol, ul {
 	list-style: none;
 }
@@ -58,7 +63,7 @@ caption {
 
 input {
 	border: none;
-/* 	border-bottom: 1px solid black; */
+	/* 	border-bottom: 1px solid black; */
 }
 
 select {

@@ -3,12 +3,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Jquery -->
+<script type="text/javascript" src='/resources/js/jquery-3.7.1.min.js'></script>
+
 <!-- Base Style // 기본 스타일 및 헤더 푸터 스타일-->
 <link rel='stylesheet' type='text/css'
 	href='/resources/css/base_style.css' />
-<link rel='stylesheet' type='text/css' href='/resources/css/header.css' />
-<link rel="stylesheet" type="text/css" href="/resources/css/footer.css" />
-<script type="text/javascript" src='/resources/js/jquery-3.7.1.min.js'></script>
 
 <!-- Bootstrap 5 // 부트스트랩 -->
 <link
@@ -23,3 +23,7 @@
 <link
 	href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css'
 	rel='stylesheet'>
+
+<!-- Header Footer Style	 -->
+<link rel='stylesheet' type='text/css' href='/resources/css/header.css' />
+<link rel="stylesheet" type="text/css" href="/resources/css/footer.css" />

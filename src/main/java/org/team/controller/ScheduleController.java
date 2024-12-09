@@ -18,7 +18,7 @@ import org.team.mapper.Ny_ReservationMapper;
 @RequestMapping("/schedule")
 public class ScheduleController {
 	@Autowired
-	private Ny_ReservationMapper mapper;
+	private Ny_ReservationMapper ny_mapper;
 
 	@GetMapping("/list")
 	public String scheduleList() {
@@ -27,14 +27,14 @@ public class ScheduleController {
 
 	@GetMapping("/calendar")
 	public String scheduleCalendar(Model model) {
-		model.addAttribute("calendarList", mapper.getList());
+		model.addAttribute("calendarList", ny_mapper.getList());
 		return "/schedule/scheduleCalendar";
 	}
 
 	@PostMapping("/calendar")
 	@ResponseBody
 	public List<ReservationDTO> scheduleCalendar(@RequestParam(value = "today") String today) {
-		List<ReservationDTO> listArr = mapper.getList();
+		List<ReservationDTO> listArr = ny_mapper.getList();
 
 		return listArr;
 	}
@@ -47,6 +47,17 @@ public class ScheduleController {
 	@PostMapping("/registAS")
 	public String scheduleRegistASPost(ReservationDTO reservation, RedirectAttributes rttr) {
 		return "/schedule/registAS";
+	}
+
+	@GetMapping("/registResult")
+	public String scheduleRegistResult(@RequestParam("message") String message, @RequestParam("rnum") String rnum,
+			Model model) {
+
+		ReservationDTO dto = ny_mapper.reservationRead(Long.parseLong(rnum));
+
+		model.addAttribute("data", dto);
+		model.addAttribute("message", message);
+		return "/schedule/registResult";
 	}
 
 	@GetMapping("/test")
