@@ -1,12 +1,18 @@
 @charset "UTF-8";
 
-footer.ja2pyc {
+footer.footer {
 	color: #f0f0f0;
 	background-color: #151535;
 	padding: 1rem;
 	margin: 1rem 0 0 0;
 }
 
-footer.ja2pyc .footer_title {
-	font-size: 2rem;
+footer.footer a { 
+	color: white;
+	text-decoration: none;
+}
+
+footer.footer .footer_logo {
+	width : 250px;
+	height :auto;
 }

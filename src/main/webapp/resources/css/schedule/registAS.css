@@ -1,1 +1,310 @@
-@charset "UTF-8";
+/* 전체 페이지 기본 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* 밝은 회색 배경 */
+    line-height: 1.6;
+}
+
+/* 메인 콘텐츠 */
+main {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* registAS 컨테이너 스타일 */
+.registAS {
+    background-color: #fff;  /* 흰색 배경 */
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    width: 100%;
+    max-width: 800px;        /* 최대 너비 */
+    margin: 0 auto;          /* 가운데 정렬 */
+}
+
+/* 헤더 스타일 */
+h1 {
+    font-size: 32px;
+    color: #333; /* 어두운 색 텍스트 */
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* 구분선 */
+hr {
+    border: 0;
+    border-top: 2px solid #ddd;
+    margin: 20px 0;
+}
+
+/* 폼 테이블 스타일 */
+table {
+    width: 100%;
+    border-spacing: 0;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+th {
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+    width: 25%;
+}
+
+td input, td select, td textarea {
+    width: calc(100% - 20px);
+    padding: 8px 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+td button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #f68e3e;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+td button:hover {
+    background-color: #e67e2d;
+}
+
+/* 캡션 스타일 */
+caption {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* 텍스트 박스 */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* 버튼 스타일 */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+}
+
+/* 약관 체크박스 스타일 */
+#term {
+    margin-right: 10px;
+}
+
+label {
+    font-size: 14px;
+    color: #555;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    main {
+        padding: 20px;
+    }
+
+    .registAS {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    th, td {
+        display: block;
+        width: 100%;
+    }
+
+    td {
+        margin-bottom: 10px;
+    }
+
+    th {
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    td input, td select, td textarea {
+        width: 100%;
+    }
+}
+
+
+/* /* 기본 설정 */ 
+/* body { */
+/*     font-family: 'Arial', sans-serif; */
+/*     line-height: 1.6; */
+/*     margin: 0; */
+/*     padding: 0; */
+/*     background-color: #f9f9f9; */
+/*     color: #333; */
+/* } */
+
+/* h1 { */
+/*     text-align: center; */
+/*     color: #444; */
+/*     font-weight: 600; */
+/*     margin-bottom: 20px; */
+/* } */
+
+/* hr { */
+/*     border: 0; */
+/*     border-top: 2px solid #ddd; */
+/*     margin: 20px 0; */
+/* } */
+
+/* /* 메인 컨테이너 */ 
+/* main { */
+/*     max-width: 800px; */
+/*     margin: 30px auto; */
+/*     padding: 20px; */
+/*     background-color: #fff; */
+/*     border-radius: 8px; */
+/*     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+/* } */
+
+/* /* 테이블 스타일 */ */
+/* table { */
+/*     width: 100%; */
+/*     border-collapse: collapse; */
+/*     margin-bottom: 20px; */
+/* } */
+
+/* table th, */
+/* table td { */
+/*     text-align: left; */
+/*     padding: 10px; */
+/*     border: 1px solid #ddd; */
+/*     vertical-align: middle; */
+/* } */
+
+/* table th { */
+/*     background-color: #f5f5f5; */
+/*     font-weight: bold; */
+/*     color: #555; */
+/* } */
+
+/* table caption { */
+/*     margin-bottom: 10px; */
+/*     font-weight: bold; */
+/*     text-align: left; */
+/* } */
+
+/* /* 폼 요소 */ 
+/* input[type="text"], */
+/* input[type="tel"], */
+/* input[type="date"], */
+/* textarea, */
+/* select { */
+/*     width: calc(100% - 20px); */
+/*     padding: 10px; */
+/*     margin: 5px 0; */
+/*     border: 1px solid #ccc; */
+/*     border-radius: 4px; */
+/*     font-size: 14px; */
+/* } */
+
+/* textarea { */
+/*     resize: vertical; */
+/* } */
+
+/* button { */
+/*     padding: 10px 15px; */
+/*     border: none; */
+/*     border-radius: 4px; */
+/*     background-color: #007bff; */
+/*     color: white; */
+/*     cursor: pointer; */
+/*     font-size: 16px; */
+/* } */
+
+/* button:hover { */
+/*     background-color: #0056b3; */
+/* } */
+
+/* /* 버튼 */ 
+/* .btn-danger { */
+/*     background-color: #dc3545; */
+/* } */
+
+/* .btn-danger:hover { */
+/*     background-color: #bd2130; */
+/* } */
+
+/* /* 주소 검색 */
+/* .searchAddress { */
+/*     display: inline-block; */
+/*     margin-bottom: 10px; */
+/* } */
+
+/* .customerAddress div input { */
+/*     display: block; */
+/*     margin-bottom: 10px; */
+/* } */
+
+/* /* 캘린더 */
+/* .calendar input[type="date"] { */
+/*     padding: 10px; */
+/*     font-size: 14px; */
+/*     border: 1px solid #ccc; */
+/*     border-radius: 4px; */
+/* } */
+
+/* /* 체크박스 */
+/* input[type="checkbox"] { */
+/*     margin-right: 10px; */
+/* } */
+
+/* /* 반응형 */
+/* @media (max-width: 768px) { */
+/*     main { */
+/*         padding: 15px; */
+/*     } */
+
+/*     table th, */
+/*     table td { */
+/*         padding: 8px; */
+/*     } */
+
+/*     button { */
+/*         font-size: 14px; */
+/*         padding: 8px 12px; */
+/*     } */
+/* } */

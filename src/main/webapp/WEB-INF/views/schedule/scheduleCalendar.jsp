@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AS 달력</title>
+<title>AS 스케쥴</title>
 <!-- Head Requires // 헤더 공통 스크립트 -->
 <jsp:include page="/WEB-INF/views/includes/headScript.jsp"></jsp:include>
 
@@ -28,7 +28,7 @@ https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap5@6.1.15/index.global.min.js
 	<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 	<main>
 		<div class="scheduleCalendar">
-			<h1>AS 달력</h1>
+			<h1>AS 스케쥴</h1>
 			<hr>
 			<div id='calendar'></div>
 			<div class='calendarData'>
