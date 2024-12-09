@@ -1,53 +1,44 @@
-$(document).ready(() => {
-	function initialize() {
-		callCalendar();
-		ajaxCalendar();
-		eventHandler();
-	}
+function transformData(response) {
+    // response 데이터를 FullCalendar 형식으로 변환
+    return response.map(item => ({
+        id: item.rnum, // 고유 ID
+        title: `${item.cname} (${item.cphone})`, // 이벤트 제목: 고객 이름과 전화번호
+        start: item.rdate, // 시작 날짜 및 시간
+        description: `
+            <strong>주소:</strong> ${item.address}<br>
+            <strong>전화:</strong> ${item.cphone}<br>
+        `, // 추가 설명 (주소, 전화번호)
+        allDay: false // 시간 포함 여부 (여기선 false로 설정)
+    }));
+}
 
-	function eventHandler() {
-		$(document).on('click', (e) => {
-			console.log(e);
-		});
-	}
+function callCalendar(response) {
 
-	function callCalendar() {
-		let calendarEl = document.getElementById('calendar');
-		let calendar = new FullCalendar.Calendar(calendarEl, {
-			initialView: 'dayGridMonth',
-			themeSystem: 'bootstrap5',
-			locale: 'ko',
-			timeZone: 'Asia/Seoul',
+    // 데이터 변환
+    let eventsData = transformData(response);
+    console.log("events", eventsData);
 
-			headerToolbar: {
-				start: 'today prev,next',
-				center: 'title',
-				end: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-			},
-			eventSources: [
-				{
-					events: [
-						{
-							title: '물주기',
-							start: '2024-12-01'
-						},
-						{
-							title: '뚜껑 닫기',
-							start: '2024-12-13',
-							end: '2024-12-15'
-						}
-					],
-					textColor: '#f0f0f0',
-					backgroundColor: '#DE596C',
-					borderColor: '#DE596C'
-				}
-			]
-		});
-		calendar.render();
-	}
+    let calendarEl = document.getElementById('calendar');
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        themeSystem: 'bootstrap5',
+        locale: 'ko',
+        timeZone: 'Asia/Seoul',
+
+        headerToolbar: {
+            start: 'today prev,next',
+            center: 'title',
+            end: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        },
+        events: eventsData, // 변환된 데이터를 직접 설정
+        eventColor: '#DE596C', // 기본 배경색
+        eventTextColor: '#f0f0f0' // 텍스트 색상
+        
+    });
+    calendar.render();
+}
 
 	function ajaxCalendar() {
-
 		// 오늘 날짜를 yyyy-MM-dd 형식으로 생성
 		const today = new Date().toISOString().slice(0, 10);
 
@@ -59,35 +50,26 @@ $(document).ready(() => {
 			success: function (response) {
 				console.log('Success:', response);
 				// 성공 시 처리 로직 추가
+				callCalendar(response);
 			},
 			error: function (xhr, status, error) {
 				console.error('Error:', status, error);
 				// 오류 시 처리 로직 추가
 			}
 		});
-		// var params = {
-		// 	'name': '홍길동',
-		// 	'age': 20
-		// };
+	}
 
-		// // $.ajax : 요청 방식을 정의
-		// $.ajax({
-		// 	url: '요청 URL',
-		// 	async: true, // true:비동기 방식, false:동기 방식
-		// 	type: 'POST', // 요청 메소드 형식 (GET/POST)
-		// 	contentType: 'application/json', // 요청 데이터 형식
-		// 	dataType: 'json', //응답 데이터 형식
-		// 	data: JSON.stringify(params),
-		// 	success: function (data, status, xhr) {
-		// 		// 요청 성공 후처리
-		// 		alert("성공!");
-		// 	},
-		// 	error: function (xhr, status, error) {
-		// 		// 요청 실패 후처리
-		// 		alert("실패!");
-		// 	}
-		// });
 
+$(document).ready(() => {
+	function initialize() {
+		ajaxCalendar();
+		eventHandler();
+	}
+
+	function eventHandler() {
+		$(document).on('click', (e) => {
+			console.log(e);
+		});
 	}
 
 	initialize();
