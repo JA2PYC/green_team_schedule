@@ -35,7 +35,7 @@
 							</tr>
 							<tr>
 								<th><label for="customerPhone1">전화번호</label></th>
-								<td><select name="cphone1" id="customerPhone1"
+								<td><select name="customerPhone1" id="customerPhone1"
 									class="phone">
 										<option value="010">010</option>
 										<option value="011">011</option>
@@ -43,10 +43,10 @@
 										<option value="017">017</option>
 										<option value="018">018</option>
 										<option value="019">019</option>
-								</select> - <input type="tel" name="cphone2" id="customerPhone2"
+								</select> - <input type="tel" name="customerPhone2" id="customerPhone2"
 									class="phone" min="0000" max="9999" minlength="3" maxlength="4"
 									step="1" placeholder="전화번호" required> - <input
-									type="tel" name="cphone3" id="customerPhone3" class="phone"
+									type="tel" name="customerPhone3" id="customerPhone3" class="phone"
 									min="0000" max="9999" minlength="4" maxlength="4" step="1"
 									placeholder="전화번호" required></td>
 							</tr>
@@ -75,7 +75,7 @@
 						<tbody>
 							<tr>
 								<th><label for="productType">제품 분류</label></th>
-								<td><select name="productType" id="productType"
+								<td><select name="category" id="productType"
 									class="productType">
 										<option value="gas">가스 보일러</option>
 										<option value="oil">기름 보일러</option>
@@ -84,12 +84,12 @@
 							</tr>
 							<tr>
 								<th><label for="productId">모델명</label></th>
-								<td><input type="text" name="productId" id="productId"
+								<td><input type="text" name="model" id="productId"
 									class="productId" placeholder="모델명"></td>
 							</tr>
 							<tr>
 								<th><label for="troubleType">고장 증상</label></th>
-								<td><select name="troubleType" id="troubleType"
+								<td><select name="issue" id="troubleType"
 									class="troubleType">
 										<option value="e101">전원 고장</option>
 										<option value="e201">온수 고장</option>
@@ -98,7 +98,7 @@
 							</tr>
 							<tr>
 								<th><label for="troubleDetails">세부증상</label></th>
-								<td><textarea rows="10" placeholder="세부증상"></textarea></td>
+								<td><textarea name="detail" id="troubleDetails" rows="10" placeholder="세부증상"></textarea></td>
 							</tr>
 						</tbody>
 					</table>
@@ -118,7 +118,7 @@
 						<tbody>
 							<tr>
 								<th>개인정보 수집 이용</th>
-								<td><input type="checkbox" name="term" id="term"><label
+								<td><input type="checkbox" name="pinformation" id="term"><label
 									for="term">개인정보 수집 이용 및 제3자 제공 동의서</label></td>
 							</tr>
 						</tbody>
