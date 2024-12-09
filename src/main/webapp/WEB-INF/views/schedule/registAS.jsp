@@ -30,7 +30,7 @@
 						<tbody>
 							<tr>
 								<th><label for="customerName">성명</label></th>
-								<td><input type="text" name="canme" id="customerName"
+								<td><input type="text" name="cname" id="customerName"
 									placeholder="성명" required></td>
 							</tr>
 							<tr>
