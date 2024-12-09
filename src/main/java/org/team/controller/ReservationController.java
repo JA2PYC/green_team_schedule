@@ -30,7 +30,7 @@ public class ReservationController {
 	    @RequestParam("customerPhone3") String customerPhone3, // 전화번호 뒷자리
 	    ReservationDTO reservation, RedirectAttributes rttr) {
 
-	    // 주소 합치기
+	    // 주소합치기 //주소
 	    String address = addressPart1 + " " + addressPart2 + " " + addressPart3 + " " + addressPart4;
 	    reservation.setAddress(address);
 
