@@ -30,12 +30,12 @@
 						<tbody>
 							<tr>
 								<th><label for="customerName">성명</label></th>
-								<td><input type="text" name="customerName"
-									id="customerName" placeholder="성명" required></td>
+								<td><input type="text" name="canme" id="customerName"
+									placeholder="성명" required></td>
 							</tr>
 							<tr>
 								<th><label for="customerPhone1">전화번호</label></th>
-								<td><select name="customerPhone1" id="customerPhone1"
+								<td><select name="cphone1" id="customerPhone1"
 									class="phone">
 										<option value="010">010</option>
 										<option value="011">011</option>
@@ -43,17 +43,19 @@
 										<option value="017">017</option>
 										<option value="018">018</option>
 										<option value="019">019</option>
-								</select> - <input type="tel" name="customerPhone2" id="customerPhone2"
+								</select> - <input type="tel" name="cphone2" id="customerPhone2"
 									class="phone" min="0000" max="9999" minlength="3" maxlength="4"
 									step="1" placeholder="전화번호" required> - <input
-									type="tel" name="customerPhone3" id="customerPhone3"
-									class="phone" min="0000" max="9999" minlength="4" maxlength="4"
-									step="1" placeholder="전화번호" required></td>
+									type="tel" name="cphone3" id="customerPhone3" class="phone"
+									min="0000" max="9999" minlength="4" maxlength="4" step="1"
+									placeholder="전화번호" required></td>
 							</tr>
+							<!-- DTO 설정중 확인 -->
 							<tr>
 								<th><label for="searchAddress">주 소</label></th>
 								<td class="customerAddress">
-									<button type="button" class="searchAddress" id="searchAddress">주소검색</button>
+									<button type="button" id="searchAddress"
+										class="searchAddress btn btn-danger float-left">주소검색</button>
 									<div>
 										<input type="text" name="addressPostcode" id="addressPostcode"
 											class="addressPostcode" placeholder="우편번호"> <input
@@ -68,7 +70,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<table>
+					<table class="table">
 						<caption>제품 및 증상 입력</caption>
 						<tbody>
 							<tr>
@@ -82,7 +84,8 @@
 							</tr>
 							<tr>
 								<th><label for="productId">모델명</label></th>
-								<td><input type="text" name="productId" id="productId" class="productId" placeholder="모델명"></td>
+								<td><input type="text" name="productId" id="productId"
+									class="productId" placeholder="모델명"></td>
 							</tr>
 							<tr>
 								<th><label for="troubleType">고장 증상</label></th>
@@ -99,7 +102,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<table>
+					<table class="table">
 						<caption>희망 방문 일시</caption>
 						<tbody>
 							<tr>
@@ -110,18 +113,19 @@
 							</tr>
 						</tbody>
 					</table>
-					<table>
+					<table class="table">
 						<caption>이용약관</caption>
 						<tbody>
 							<tr>
-								<th>개인정보 수집 이용 및 제3자 제공 동의서</th>
+								<th>개인정보 수집 이용</th>
 								<td><input type="checkbox" name="term" id="term"><label
 									for="term">개인정보 수집 이용 및 제3자 제공 동의서</label></td>
 							</tr>
 						</tbody>
 					</table>
 					<div>
-						<button type="submit">AS 접수하기</button>
+						<button type="submit" class="btn btn-danger float-left">AS
+							접수하기</button>
 					</div>
 				</form>
 			</div>
