@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.team.dto.BoardDTO;
 import org.team.dto.ReservationDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class) //JUnit과 스프링 테스트 컨텍스트 통합
@@ -27,7 +28,7 @@ public class ReservationMapperTests {
 	@Test
 	public void testRead() {
 		// 존재하는 게시물 1번으로 테스트
-		ReservationDTO reservation = Ny_mapper.reservationRead(1L);
+		BoardDTO reservation = Ny_mapper.reservationRead(1L);
 		System.out.println(reservation);
 	}
 	

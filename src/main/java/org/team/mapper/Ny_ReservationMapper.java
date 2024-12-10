@@ -23,9 +23,10 @@ public interface Ny_ReservationMapper {
 	    public int getTotalCount();
 	    
 	    // 게시판 조회수 1 증가
-	    public int updateVisitCount();
+	    public Long updateVisitCount(Long bnum);
 		
-		public ReservationDTO reservationRead(Long bnum);
+	    // 게시판 상세조회
+		public BoardDTO reservationRead(Long bnum);
 		
 
 

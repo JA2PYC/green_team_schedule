@@ -43,10 +43,16 @@ public class Ny_ReservationController {
         model.addAttribute("totalPages", totalPages);
 	}
 	
-	@PostMapping({"/read"})
-	public void get(@RequestParam("bnum") Long bnum, Model model) {
+	// 게시판 상세보기
+	@GetMapping({"/read/get"})
+	public String read(@RequestParam("bnum") Long bnum, Model model) {
 		
+		Ny_mapper.updateVisitCount(bnum);
 		model.addAttribute("board", Ny_mapper.reservationRead(bnum));
 		System.out.println("/read");
+		
+		return "read";
 	}
+	
+	
 }
