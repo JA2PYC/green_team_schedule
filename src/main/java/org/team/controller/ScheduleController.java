@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.team.dto.ReservationDTO;
-import org.team.mapper.Ny_ReservationMapper;
+import org.team.mapper.ReservationMapper;
 
 @Controller
 @RequestMapping("/schedule")
 public class ScheduleController {
 	@Autowired
-	private Ny_ReservationMapper ny_mapper;
+	private ReservationMapper mapper;
 
 	@GetMapping("/list")
 	public String scheduleList() {
@@ -27,15 +27,14 @@ public class ScheduleController {
 
 	@GetMapping("/calendar")
 	public String scheduleCalendar(Model model) {
-		model.addAttribute("calendarList", ny_mapper.getList());
+		model.addAttribute("calendarList", mapper.getList());
 		return "/schedule/scheduleCalendar";
 	}
 
 	@PostMapping("/calendar")
 	@ResponseBody
 	public List<ReservationDTO> scheduleCalendar(@RequestParam(value = "today") String today) {
-		List<ReservationDTO> listArr = ny_mapper.getList();
-
+		List<ReservationDTO> listArr = mapper.getList();
 		return listArr;
 	}
 
@@ -51,10 +50,8 @@ public class ScheduleController {
 
 	@GetMapping("/registResult")
 	public String scheduleRegistResult(@RequestParam("message") String message, @RequestParam("rnum") String rnum,
-			Model model) {
-
-		ReservationDTO dto = ny_mapper.reservationRead(Long.parseLong(rnum));
-
+			Model model){
+		ReservationDTO dto = mapper.reservationRead(Long.parseLong(rnum));
 		model.addAttribute("data", dto);
 		model.addAttribute("message", message);
 		return "/schedule/registResult";
@@ -64,4 +61,11 @@ public class ScheduleController {
 	public String scheduleTest() {
 		return "/schedule/test";
 	}
+	//처리현황 페이지
+	@GetMapping("/processStatus")
+	public String getProcessStatus(Model model) {
+	    List<ReservationDTO> statusList = mapper.getStatusList();
+	    model.addAttribute("statusList", statusList);
+	    return "/schedule/processStatusBoard"; //jsp 파일 경로
+	}	
 }
