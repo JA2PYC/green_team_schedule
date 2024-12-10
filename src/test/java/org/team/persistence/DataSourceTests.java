@@ -1,5 +1,4 @@
 package org.team.persistence;
-
 import static org.junit.Assert.fail;
 
 import java.sql.Connection;
@@ -16,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
-
 public class DataSourceTests {
 
 	@Autowired

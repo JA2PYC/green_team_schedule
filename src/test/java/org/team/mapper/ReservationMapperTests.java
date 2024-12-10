@@ -5,14 +5,17 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.team.dto.BoardDTO;
 import org.team.dto.ReservationDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class) //JUnit과 스프링 테스트 컨텍스트 통합
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml") //root-context.xml 파일을 로드하여 스프링 설정을 초기화.
 public class ReservationMapperTests {
+	@Autowired
+	private ReservationMapper mapper;
 	
 	@Autowired //의존성 주입 ReservationMapper.java파일의 인터페이스
-	private ReservationMapper mapper;
+	private Ny_ReservationMapper Ny_mapper;
 	
 	/*
 	@Test
@@ -24,7 +27,8 @@ public class ReservationMapperTests {
 	@Test
 	public void testRead() {
 		// 존재하는 게시물 1번으로 테스트
-		ReservationDTO reservation = mapper.reservationRead(1L);
+
+		BoardDTO reservation = Ny_mapper.reservationRead(1L);
 		System.out.println(reservation);
 	}
 	

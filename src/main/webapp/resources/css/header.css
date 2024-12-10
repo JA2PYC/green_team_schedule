@@ -1,29 +1,70 @@
 @charset "UTF-8";
+/* 공통 스타일 */
+/* 기존 헤더 스타일 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
 
 header.header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	color: #f0f0f0;
-	background-color: #151535;
-	padding: 1rem;
-	margin: 0 0 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    background-color: #f8f9fa; /* 헤더 배경색 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
-header.header a {
-	color:white;
-	text-decoration: none;
+/* 제목 스타일 */
+.header_title {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-header.header .header_title {
-	font-size: 2rem;
+.header_title a {
+    text-decoration: none;
+    color: #333; /* 제목 텍스트 색 */
+    transition: color 0.3s;
 }
 
-header.header nav ul {
-	display: flex;
-	margin: 0;
+.header_title a:hover {
+    color: #f68e3e; /* 호버 시 강조색 */
 }
 
-header.header nav ul li {
-	padding: 0.5rem 1rem;
+/* 내비게이션 버튼 스타일 */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px; /* 메뉴 간격 */
+}
+
+nav li {
+    display: inline;
+}
+
+nav a.button-link {
+    display: inline-block;
+    background-color: #f68e3e; /* 기본 배경색 */
+    color: white; /* 텍스트 색상 */
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+nav a.button-link:hover {
+    background-color: #e57a31; /* 호버 시 배경색 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 호버 시 그림자 */
+}
+
+nav a.button-link:active {
+    background-color: #d06b26; /* 클릭 시 배경색 */
+    box-shadow: none; /* 클릭 시 그림자 제거 */
 }
