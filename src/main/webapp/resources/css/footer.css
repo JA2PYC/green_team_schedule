@@ -1,18 +1,40 @@
 @charset "UTF-8";
-
-footer.footer {
-	color: #f0f0f0;
-	background-color: #151535;
-	padding: 1rem;
-	margin: 1rem 0 0 0;
+/* 푸터 스타일 */
+.footer {
+    background-color: #333; /* 어두운 배경 */
+    color: #fff; /* 흰색 텍스트 */
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
 }
 
-footer.footer a { 
-	color: white;
-	text-decoration: none;
+.footer a {
+    color: #f68e3e; /* 버튼 색상과 동일한 주황색 */
+    text-decoration: none;
 }
 
-footer.footer .footer_logo {
-	width : 250px;
-	height :auto;
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .footer_logo {
+    margin-bottom: 10px;
+}
+
+.footer .info {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.footer .infoName {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* 모바일에서도 보기 좋은 푸터 */
+@media (max-width: 768px) {
+    .footer {
+        font-size: 12px;
+        padding: 15px 0;
+    }
 }

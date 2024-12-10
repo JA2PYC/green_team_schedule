@@ -21,7 +21,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup,
 }
 
 body {
-	line-height: 1;
+	font-family: 'Arial', sans-serif;
+	line-height: 1.5;
+	background-color: #f4f4f4; /* 밝은 회색 배경 */
 }
 
 a, a:link, a:hover, a:visited {
@@ -43,7 +45,12 @@ blockquote:before, blockquote:after, q:before, q:after {
 }
 
 main {
+	display: flex;
+	align-items: center; /* 세로로 가운데 정렬 */
+	justify-content: center; /* 가로로 가운데 정렬 */
 	max-width: 1280px;
+	min-height: 100vh; /* 화면 전체 높이를 사용 */
+	padding: 40px 20px;
 	margin: auto;
 }
 
