@@ -31,8 +31,10 @@
         ]]>
 	</select>
 
-	<select id="reservationRead" parameterType="long"
+	<select id="boardPostRead" parameterType="long"
 		resultType="org.team.dto.ReservationDTO">
+		<![CDATA[
 		select * from customer where rnum = #{rnum}
+		]]>
 	</select>
 </mapper>

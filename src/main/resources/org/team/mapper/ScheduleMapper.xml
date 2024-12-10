@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.team.mapper.ScheduleMapper">
+
+	<!-- 달력 출력용 고객DB 전체 불러오기 -->
+	<select id="getList" resultType="org.team.dto.ReservationDTO">
+	<![CDATA[
+	select * from customer where rnum > 0
+	]]>
+	</select>
+	
+	<select id="reservationRead" parameterType="long" resultType="org.team.dto.ReservationDTO">
+	
+	<![CDATA[
+	SELECT * FROM customer WHERE rnum = #{rnum} 
+	]]>
+	</select>
+</mapper>

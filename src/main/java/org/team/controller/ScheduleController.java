@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.team.dto.ReservationDTO;
-import org.team.mapper.Ny_ReservationMapper;
+import org.team.mapper.ScheduleMapper;
 
 @Controller
 @RequestMapping("/schedule")
 public class ScheduleController {
 	@Autowired
-	private Ny_ReservationMapper ny_mapper;
+	private ScheduleMapper scheduleMapper;
 
 	@GetMapping("/list")
 	public String scheduleList() {
@@ -27,14 +27,14 @@ public class ScheduleController {
 
 	@GetMapping("/calendar")
 	public String scheduleCalendar(Model model) {
-		model.addAttribute("calendarList", ny_mapper.getList());
+		model.addAttribute("calendarList", scheduleMapper.getList());
 		return "/schedule/scheduleCalendar";
 	}
 
 	@PostMapping("/calendar")
 	@ResponseBody
 	public List<ReservationDTO> scheduleCalendar(@RequestParam(value = "today") String today) {
-		List<ReservationDTO> listArr = ny_mapper.getList();
+		List<ReservationDTO> listArr = scheduleMapper.getList();
 
 		return listArr;
 	}
@@ -53,7 +53,7 @@ public class ScheduleController {
 	public String scheduleRegistResult(@RequestParam("message") String message, @RequestParam("rnum") String rnum,
 			Model model) {
 
-		ReservationDTO dto = ny_mapper.reservationRead(Long.parseLong(rnum));
+		ReservationDTO dto = scheduleMapper.reservationRead(Long.parseLong(rnum));
 
 		model.addAttribute("data", dto);
 		model.addAttribute("message", message);

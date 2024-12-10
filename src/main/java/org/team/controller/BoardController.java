@@ -36,9 +36,9 @@ public class BoardController {
 		return "/board/list";
 	}
 	
-	@GetMapping("/read")
-	public String boardRead() {
-		return "/board/read";
+	@GetMapping("/post")
+	public String boardPost() {
+		return "/board/post";
 	}
 	
 }
