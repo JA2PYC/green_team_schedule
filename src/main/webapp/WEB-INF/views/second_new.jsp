@@ -27,7 +27,7 @@
 		<c:forEach items="${boardlist}" var="board">
 			<tr>
 				<td><c:out value="${ board.bnum}"/></td>
-				<td><a href='/read/post?bnum=<c:out value="${board.bnum}"/>'>
+				<td><a href='/read/get?bnum=<c:out value="${board.bnum}"/>'>
 				<c:out value="${board.title}"/></a></td>
 				<td><c:out value="${board.ename}" /></td>
 				<%-- <td><c:out value="${board.postdate}" /></td> --%>
