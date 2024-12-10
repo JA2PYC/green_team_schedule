@@ -6,7 +6,7 @@ public class ReservationDTO {
     private String cname;       // 고객 이름
     private String cphone;      // 고객 휴대전화번호
     private String address;     // 고객 기본주소
-    private String unit;        // 고객 세부주소
+    private String unit;        // 고객 세부주소 (추가)
     private String category;    // 제품 분류
     private String model;       // 보일러 모델명
     private String issue;       // 고장 증상
