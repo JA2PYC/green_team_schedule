@@ -16,7 +16,11 @@
 			<h1>난방기사 A/S 스케쥴 관리 서비스</h1>
 			<hr>
 			<div class="homeMenu">
-				<a href="/schedule/calendar">
+				<a href="/board/list">
+					<div class="menuBox menuRegist">
+						<i class="bi bi-info-square"></i> <span>공지사항</span>
+					</div>
+				</a> <a href="/schedule/calendar">
 					<div class="menuBox menuCalendar">
 						<i class="bi bi-calendar-check"></i> <span>AS 스케쥴</span>
 					</div>

@@ -8,11 +8,7 @@ import org.team.dto.BoardDTO;
 import org.team.dto.ReservationDTO;
 
 @Mapper
-public interface Ny_ReservationMapper {
-
-	// @Select("select * from customer where rnum > 0")
-	public List<ReservationDTO> getList(); // 예약 목록 조회
-
+public interface BoardMapper {
 	// 공지사항 게시판 조회
 	List<BoardDTO> getBoardList(@Param("pageSize") int pageSize, @Param("offset") int offset);
 
@@ -21,7 +17,7 @@ public interface Ny_ReservationMapper {
 
 	// 게시판 조회수 1 증가
 	public int updateVisitCount();
-
+	
 	public ReservationDTO reservationRead(Long bnum);
 
 }
