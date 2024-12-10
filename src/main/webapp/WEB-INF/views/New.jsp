@@ -87,7 +87,7 @@
 
           var geocoder = new kakao.maps.services.Geocoder();
           var mapOption = {
-              center: new kakao.maps.LatLng(33.450701, 126.570667), // 기본 위치
+              center: new kakao.maps.LatLng(35.542367, 129.338166), // 기본 위치
               level: 3
           };
 
@@ -154,9 +154,32 @@
 		  loadMap(selectedEvent.extendedProps.location);
           
           // 모달을 화면에 표시
+          setTimeout(function() {
           var eventDetails = document.getElementById('eventDetails');
           eventDetails.style.left = mouseX + 'px';
           eventDetails.style.top = mouseY + 'px';
+          
+          // 화면 크기 구하기
+          var windowWidth = window.innerWidth;
+          var modalWidth = eventDetails.offsetWidth;
+          var modalHeight = eventDetails.offsetHeight;
+
+          // 모달이 화면 오른쪽을 벗어나지 않도록 조정
+          if (mouseX + modalWidth > windowWidth) {
+              eventDetails.style.left = (windowWidth - modalWidth - 20) + 'px'; // 20px 여유를 두기 위해
+          } else {
+              eventDetails.style.left = mouseX + 'px';
+          }
+
+          // 화면 크기 구하기 (세로 위치는 화면 아래로 벗어나지 않도록 조정)
+          var windowHeight = window.innerHeight;
+          if (mouseY + modalHeight > windowHeight) {
+              eventDetails.style.top = (windowHeight - modalHeight - 20) + 'px'; // 20px 여유를 두기 위해
+          } else {
+              eventDetails.style.top = mouseY + 'px';
+          }
+        	}, 100); 
+          
           eventDetails.style.display = 'block';
       }
       
