@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.team.mapper.ReservationMapper">	
 
-	<!-- Insert 예약 등록 쿼리 작성->DB에 예약 데이터 삽입 -->
-	<insert id="insert" parameterType="org.team.dto.ReservationDTO">
-	    INSERT INTO customer 
-	    (cname, cphone, address, category, model, issue, detail, visitdate, pinformation)
-	    VALUES 
-	    (#{cname}, #{cphone}, #{address}, #{category}, #{model}, #{issue}, #{detail}, #{visitdate}, #{pinformation})
-	</insert>
-
+    <!-- Insert 예약 등록 쿼리 작성->DB에 예약 데이터 삽입 -->
+    <insert id="insert" parameterType="org.team.dto.ReservationDTO">
+        <![CDATA[
+        INSERT INTO customer 
+        (cname, cphone, address, unit, category, model, issue, detail, visitdate, visitdate_end, pinformation)
+        VALUES
+        (#{cname}, #{cphone}, #{address}, #{unit}, #{category}, #{model}, #{issue}, #{detail}, #{visitdate}, #{visitdate_end}, #{pinformation});
+    	]]>
+    </insert> 
+   
+    <!-- 처리현황 데이터 조회 SQL -->
+    <select id="getStatusList" resultType="org.team.dto.ReservationDTO">
+    	<![CDATA[
+	   SELECT 
+	        rnum, 
+	        rdate, 
+	        cname, 
+	        CASE 
+	            WHEN NOW() < visitdate THEN 'A/S 전'
+	            WHEN NOW() >= visitdate AND NOW() < visitdate_end THEN 'A/S 중'
+	            ELSE 'A/S 완료'
+	        END AS processStatus,
+	        visitdate_end
+	    FROM customer;
+   		]]>
+	</select>
 	
+	<select id="reservationRead" parameterType="long" resultType="org.team.dto.ReservationDTO">
+	<![CDATA[	
+	select * from customer where rnum = #{rnum}
+	]]>
+	</select>
+
 </mapper>

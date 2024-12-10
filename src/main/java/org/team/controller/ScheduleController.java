@@ -35,7 +35,6 @@ public class ScheduleController {
 	@ResponseBody
 	public List<ReservationDTO> scheduleCalendar(@RequestParam(value = "today") String today) {
 		List<ReservationDTO> listArr = scheduleMapper.getList();
-
 		return listArr;
 	}
 
@@ -64,4 +63,11 @@ public class ScheduleController {
 	public String scheduleTest() {
 		return "/schedule/test";
 	}
+	//처리현황 페이지
+	@GetMapping("/processStatus")
+	public String getProcessStatus(Model model) {
+	    List<ReservationDTO> statusList = scheduleMapper.getStatusList();
+	    model.addAttribute("statusList", statusList);
+	    return "/schedule/processStatusBoard"; //jsp 파일 경로
+	}	
 }

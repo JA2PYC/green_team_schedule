@@ -11,8 +11,27 @@
 	select * from customer where rnum > 0
 	]]>
 	</select>
+
+	<!-- 처리현황 데이터 조회 SQL -->
+	<select id="getStatusList"
+		resultType="org.team.dto.ReservationDTO">
+    	<![CDATA[
+	   SELECT 
+	        rnum, 
+	        rdate, 
+	        cname, 
+	        CASE 
+	            WHEN NOW() < visitdate THEN 'A/S 전'
+	            WHEN NOW() >= visitdate AND NOW() < visitdate_end THEN 'A/S 중'
+	            ELSE 'A/S 완료'
+	        END AS processStatus,
+	        visitdate_end
+	    FROM customer;
+   		]]>
+	</select>
 	
-	<select id="reservationRead" parameterType="long" resultType="org.team.dto.ReservationDTO">
+	<select id="reservationRead" parameterType="long"
+		resultType="org.team.dto.ReservationDTO">
 	
 	<![CDATA[
 	SELECT * FROM customer WHERE rnum = #{rnum} 
