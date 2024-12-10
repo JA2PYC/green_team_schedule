@@ -4,7 +4,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +14,6 @@
 <!-- Page Style // 개별 페이지 스타일 및 스크립트 -->
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/board/list.css" />
-<script type="text/javascript" src="/resources/js/board/list.js"></script>
 
 </head>
 <body>
@@ -25,7 +23,7 @@
 			<h1>공지사항</h1>
 			<hr>
 			<div class="list">
-				<table border="1">
+				<table>
 					<thead>
 						<tr>
 							<th>번호</th>

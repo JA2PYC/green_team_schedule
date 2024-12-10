@@ -10,35 +10,35 @@
 <jsp:include page="/WEB-INF/views/includes/headScript.jsp"></jsp:include>
 
 <!-- Page Style // 개별 페이지 스타일 및 스크립트 -->
-<link rel="stylesheet" type="text/css" href="" />
-<script type="text/javascript" src=""></script>
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/board/post.css" />
 
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 	<main>
-		<div class="boardRead">
+		<div class="post">
+			<h1>공지사항</h1>
+			<hr>
 			<input type="hidden" name="bnum" value="${board.bnum}" />
-			<table border="1" width="90%">
+			<table>
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>제목</th>
+						<th><c:out value="${board.bnum}" /></th>
+						<td><c:out value="${board.title}" /></td>
+					</tr>
+					<tr>
 						<th>작성자</th>
-						<th>내용</th>
+						<td><c:out value="${board.ename}" /></td>
 						<th>작성일</th>
+						<td><fmt:formatDate pattern="yyyy-MM-dd"
+								value="${board.postdate}" /></td>
 						<th>조회수</th>
+						<td><c:out value="${board.visitcount}" /></td>
 					</tr>
 				</thead>
-
 				<tr>
-					<td><c:out value="${board.bnum}" /></td>
-					<td><c:out value="${board.title}" /></td>
-					<td><c:out value="${board.ename}" /></td>
-					<td><c:out value="${board.content}" /></td>
-					<td><fmt:formatDate pattern="yyyy-MM-dd"
-							value="${board.postdate}" /></td>
-					<td><c:out value="${board.visitcount}" /></td>
+					<td colspan="6"><c:out value="${board.content}" /></td>
 				</tr>
 			</table>
 		</div>
