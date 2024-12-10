@@ -5,7 +5,8 @@ public class ReservationDTO {
     private String rdate;       // 고객 접수일자
     private String cname;       // 고객 이름
     private String cphone;      // 고객 휴대전화번호
-    private String address;     // 고객 주소
+    private String address;     // 고객 기본주소
+    private String unit;        // 고객 세부주소
     private String category;    // 제품 분류
     private String model;       // 보일러 모델명
     private String issue;       // 고장 증상
@@ -13,13 +14,11 @@ public class ReservationDTO {
     private String visitdate;   // AS 방문일자
     private String visitdate_end;   // AS 방문일자(종료시간)
     private Boolean pinformation; // 개인정보 동의 여부
-    
+	
     // Getter and Setter
-    
-	public Long getRnum() {
+    public Long getRnum() {
 		return rnum;
 	}
-
 	public void setRnum(Long rnum) {
 		this.rnum = rnum;
 	}
@@ -46,6 +45,12 @@ public class ReservationDTO {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getUnit() {
+		return unit;
+	}
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 	public String getCategory() {
 		return category;
@@ -89,14 +94,12 @@ public class ReservationDTO {
 	public void setPinformation(Boolean pinformation) {
 		this.pinformation = pinformation;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "ReservationDTO [rnum=" + rnum + ", rdate=" + rdate + ", cname=" + cname + ", cphone=" + cphone
-				+ ", address=" + address + ", category=" + category + ", model=" + model + ", issue=" + issue
-				+ ", detail=" + detail + ", visitdate=" + visitdate + ", visitdate_end=" + visitdate_end
+				+ ", address=" + address + ", unit=" + unit + ", category=" + category + ", model=" + model + ", issue="
+				+ issue + ", detail=" + detail + ", visitdate=" + visitdate + ", visitdate_end=" + visitdate_end
 				+ ", pinformation=" + pinformation + "]";
 	}
-
-
 }

@@ -30,8 +30,6 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
-	<bean id="smsService" class="org.team.smsservice.SmsService" />
-	
+	<context:component-scan base-package="org.team" />
 	<mybatis-spring:scan base-package="org.team.mapper" />
-
 </beans>

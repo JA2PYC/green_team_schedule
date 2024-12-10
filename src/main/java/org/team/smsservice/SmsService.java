@@ -4,7 +4,7 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service //Twilio SMS 관련 코드
 public class SmsService {
     private static final String ACCOUNT_SID = "TWILIO_ACCOUNT_SID"; // Twilio 계정 SID 보안상 환경변수에서 읽기
     private static final String AUTH_TOKEN = "TWILIO_AUTH_TOKEN";   // Twilio Auth Token 보안상 환경변수에서 읽기
