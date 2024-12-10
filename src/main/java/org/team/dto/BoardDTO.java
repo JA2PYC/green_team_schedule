@@ -7,7 +7,7 @@ public class BoardDTO {
 	private String title;	 // 게시판 제목
 	private String content;  // 게시판 내용
 	private Date postdate; // 게시판 등록날짜
-	private int visitcount;  // 게시판 조회수
+	private Long visitcount;  // 게시판 조회수
 	private String ename; // 게시자 이름
 	
     // Getter and Setter
@@ -36,10 +36,10 @@ public class BoardDTO {
 	public void setPostdate(Date postdate) {
 		this.postdate = postdate;
 	}
-	public int getVisitcount() {
+	public Long getVisitcount() {
 		return visitcount;
 	}
-	public void setVisitcount(int visitcount) {
+	public void setVisitcount(Long visitcount) {
 		this.visitcount = visitcount;
 	}
 	public String getEname() {

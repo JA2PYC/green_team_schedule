@@ -34,14 +34,17 @@
         <![CDATA[
         UPDATE board SET 
         visitcount=visitcount+1 
-        WHERE bnum=?
+        WHERE bnum = #{bnum}
         
         ]]>
     </select>
 	
-	
-	<select id="reservationRead" parameterType="long" resultType="org.team.dto.ReservationDTO">
-		select * from customer where rnum = #{rnum}
+	<!-- 게시판 상세조회 -->
+	<select id="reservationRead" parameterType="long" resultType="org.team.dto.BoardDTO">
+	select BNUM,TITLE,ENAME,CONTENT,POSTDATE,VISITCOUNT 
+	from board 
+	join employee on board.id = employee.id 
+	where bnum = #{bnum}
 	</select>
 	
 </mapper>
