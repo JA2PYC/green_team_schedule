@@ -14,9 +14,8 @@ public class ReservationDTO {
     private String visitdate;   // AS 방문일자
     private String visitdate_end;   // AS 방문일자(종료시간)
     private Boolean pinformation; // 개인정보 동의 여부
-	
-    // Getter and Setter
-    public Long getRnum() {
+    private String processStatus; // A/S처리현황
+	public Long getRnum() {
 		return rnum;
 	}
 	public void setRnum(Long rnum) {
@@ -94,12 +93,26 @@ public class ReservationDTO {
 	public void setPinformation(Boolean pinformation) {
 		this.pinformation = pinformation;
 	}
-	
+	public String getProcessStatus() {
+		return processStatus;
+	}
+	public void setProcessStatus(String processStatus) {
+		this.processStatus = processStatus;
+	}
 	@Override
 	public String toString() {
 		return "ReservationDTO [rnum=" + rnum + ", rdate=" + rdate + ", cname=" + cname + ", cphone=" + cphone
 				+ ", address=" + address + ", unit=" + unit + ", category=" + category + ", model=" + model + ", issue="
 				+ issue + ", detail=" + detail + ", visitdate=" + visitdate + ", visitdate_end=" + visitdate_end
-				+ ", pinformation=" + pinformation + "]";
+				+ ", pinformation=" + pinformation + ", processStatus=" + processStatus + ", getRnum()=" + getRnum()
+				+ ", getRdate()=" + getRdate() + ", getCname()=" + getCname() + ", getCphone()=" + getCphone()
+				+ ", getAddress()=" + getAddress() + ", getUnit()=" + getUnit() + ", getCategory()=" + getCategory()
+				+ ", getModel()=" + getModel() + ", getIssue()=" + getIssue() + ", getDetail()=" + getDetail()
+				+ ", getVisitdate()=" + getVisitdate() + ", getVisitdate_end()=" + getVisitdate_end()
+				+ ", getPinformation()=" + getPinformation() + ", getProcessStatus()=" + getProcessStatus()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
+	
+   
 }

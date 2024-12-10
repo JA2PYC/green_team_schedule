@@ -7,4 +7,7 @@ import org.team.dto.ReservationDTO;
 @Mapper
 public interface ReservationMapper {
     void insert(ReservationDTO reservation);
-} //예약 데이터 삽입
+    List<ReservationDTO> getList(); 
+	List<ReservationDTO> getStatusList(); // 처리현황 조회 메서드 추가
+	ReservationDTO reservationRead(long parseLong);
+	}

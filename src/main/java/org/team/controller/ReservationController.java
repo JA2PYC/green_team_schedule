@@ -13,17 +13,15 @@ import org.team.mapper.ReservationMapper;
 import org.team.smsservice.SmsService;
 
 @Controller
-// @RequestMapping("/board/*")
-
-public class ReservationController {
+public class ReservationController{
 
 	@Autowired
 	private ReservationMapper mapper;
 	
 	@Autowired
     private SmsService smsService; // SmsService 의존성주입
-
-	// registAS.jsp화면의 AS접수하기 버튼 클릭 시 예약데이터 등록처리
+	
+	//registAS.jsp화면의 AS접수하기 버튼 클릭 시 예약데이터 등록처리
 	@PostMapping("/schedule/registProcess")
 	public String register(
 	    @RequestParam("addressPostcode") String addressPart1, // 주소 1(우편번호)
@@ -65,5 +63,15 @@ public class ReservationController {
 
 	    // JSP 페이지로 이동
 	    return "redirect:/schedule/registResult";
+		}
+		@GetMapping("/New")
+		public void list(Model model) {
+			model.addAttribute("list", mapper.getList());
+			System.out.println("list");
+		}
+		@GetMapping({"/read"})
+		public void get(@RequestParam("bno") Long bno, Model model) {
+		System.out.println("/read");
+		model.addAttribute("board", mapper.reservationRead(bno));
 	}
 }
