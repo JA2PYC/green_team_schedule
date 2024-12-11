@@ -26,6 +26,15 @@
 	animation: fadeIn 0.3s ease-in-out; /* 부드러운 등장 효과 */
 }
 
+.eventTitle{
+	font-size: 18px;
+	font-weight:600;
+}
+
+.modal .eventHr{
+	margin: 0.5rem 0;
+}
+
 /* 모달 닫기 버튼 */
 .eventButton {
 	background-color: #f68e3e; /* 주황색 */
@@ -43,6 +52,15 @@
 .eventButton:hover {
 	background-color: #e77c2a; /* hover 효과 */
 	
+}
+
+.modal table {
+	width:80%;
+	margin: auto; 	
+}
+
+.modal table th {
+	padding: 0.25rem 0;
 }
 
 /* 모달 등장 애니메이션 */

@@ -36,7 +36,7 @@
 							<tr>
 								<th><label for="customerPhone1">전화번호</label></th>
 								<td><select name="customerPhone1" id="customerPhone1"
-									class="phone">
+									class="phone" required>
 										<option value="010">010</option>
 										<option value="011">011</option>
 										<option value="016">016</option>
@@ -58,13 +58,13 @@
 										class="searchAddress btn btn-danger float-left">주소검색</button>
 									<div>
 										<input type="text" name="addressPostcode" id="addressPostcode"
-											class="addressPostcode" placeholder="우편번호"> <input
+											class="address addressPostcode" placeholder="우편번호"> <input
 											type="text" name="addressRoad" id="addressRoad"
-											class="addressRoad" placeholder="도로명 주소"> <input
-											type="text" name="addressBname" id="addressBname"
-											class="addressBname" placeholder="동주소"> <input
-											type="text" name="addressDetails" id="addressDetails"
-											class="addressDetails" placeholder="상세주소">
+											class="address addressRoad" placeholder="도로명 주소" required>
+										<input type="text" name="addressBname" id="addressBname"
+											class="address addressBname" placeholder="동주소" required>
+										<input type="text" name="addressDetails" id="addressDetails"
+											class="addressDetails" placeholder="상세주소" required>
 									</div>
 								</td>
 							</tr>
@@ -109,12 +109,14 @@
 							<tr>
 								<td>
 									<div class="calendar">
-<!-- 										<input type="datetime-local" id="visitdate" -->
-<!-- 											name="visitdate" value="2024-12-15T09:00"/> -->
-										<input type="date" name="visitdate" value="2024-12-15" />
+										<input type="date" name="visitdate" value="2024-12-13"
+											required />
 									</div>
 									<div class="calendarTime">
-									
+										<div class="time-buttons">
+											<!-- 버튼 목록 -->
+										</div>
+										<input type="hidden" id="selectedTime" name="visittime"	required>
 									</div>
 								</td>
 							</tr>
@@ -125,7 +127,7 @@
 						<tbody>
 							<tr>
 								<th>개인정보 수집 이용</th>
-								<td><input type="checkbox" name="pinformation" id="term"><label
+								<td><input type="checkbox" name="pinformation" id="term" required><label
 									for="term">개인정보 수집 이용 및 제3자 제공 동의서</label></td>
 							</tr>
 						</tbody>

@@ -10,10 +10,11 @@ $(document).ready(() => {
 			//	closeEventDetails();
 		});
 	}
-	
+
 	// Full Calendar 호출
 	function callCalendar(response) {
 		// 데이터 변환
+				console.log(response)
 		let eventsData = transformData(response);
 
 		let calendarEl = document.getElementById('calendar');
@@ -21,8 +22,7 @@ $(document).ready(() => {
 			initialView: 'dayGridMonth',
 			themeSystem: 'bootstrap5',
 			locale: 'ko',
-			timeZone: 'Asia/Seoul',
-
+			// timeZone: 'Asia/Seoul',
 			headerToolbar: {
 				start: 'today prev,next',
 				center: 'title',
@@ -32,6 +32,7 @@ $(document).ready(() => {
 			eventColor: '#e77c2a', // 기본 배경색
 			eventTextColor: '#f0f0f0', // 텍스트 색상
 			eventClick: function(info) {
+				console.log(info)
 				handleEventClick(info);
 			}
 		});
@@ -70,6 +71,7 @@ $(document).ready(() => {
 			end: item.visitdate_end,
 			extendedProps: {
 				location: item.address, // 장소 정보 추가
+				unit: item.unit
 			},
 			description: `
             <strong>주소:</strong> ${item.address}<br>
@@ -83,27 +85,32 @@ $(document).ready(() => {
 	function handleEventClick(info) {
 		console.log(info);
 		selectedEvent = info.event;
-		mouseX = info.jsEvent.clientX;
-		mouseY = info.jsEvent.clientY;
+		//		mouseX = info.jsEvent.clientX;
+		//		mouseY = info.jsEvent.clientY;
 
 		// 날짜 및 시간을 시간대 설정으로 포맷
-		const startDate = new Date(selectedEvent.start);
-		const endDate = new Date(selectedEvent.end + 60 * 60 * 1000);
+		let startDate = new Date(selectedEvent.start);
+		console.log(startDate)
+		let endDate = new Date(selectedEvent.end + 60 * 60 * 1000);
+		console.log(endDate)
 
-		const startTime = startDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Seoul' });
-		const endTime = endDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Seoul' });
+		let startTime = startDate.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+		console.log(startTime)
+		let endTime = endDate.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Seoul' });
+		console.log(endTime)
 
 		timeData = startTime + " ~ " + endTime;
+		console.log(timeData)
 
 		// 장소 (여기서 장소는 extendedProps로 가정)
-		locationData = selectedEvent.extendedProps.location || "미정";
-
+		locationData = selectedEvent.extendedProps.location || "주소 확인요망";
+		detailLocationData = selectedEvent.extendedProps.unit || "세부주소 확인요망";
 
 		window.openModal({
 			title: selectedEvent.title,
 			time: timeData,
 			location: locationData,
-			// detailLocation: "빌딩 10층 1002호"
+			detailLocation: detailLocationData
 		});
 
 		// 카카오 지도 로드

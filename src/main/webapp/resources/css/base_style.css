@@ -62,7 +62,7 @@ main {
 	align-items: center; /* 세로로 가운데 정렬 */
 	justify-content: center; /* 가로로 가운데 정렬 */
 	max-width: 1280px;
-	min-height: 100vh; /* 화면 전체 높이를 사용 */
+	min-height: 80vh; /* 화면 전체 높이를 사용 */
 	padding: 40px 20px;
 	margin: auto;
 }
