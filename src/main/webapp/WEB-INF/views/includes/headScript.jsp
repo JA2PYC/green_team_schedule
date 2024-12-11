@@ -19,7 +19,12 @@
 <link
 	href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css'
 	rel='stylesheet'>
-	
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">	
+
 <!-- Base Style // 기본 스타일 및 헤더 푸터 스타일-->
 <link rel='stylesheet' type='text/css'
 	href='/resources/css/base_style.css' />

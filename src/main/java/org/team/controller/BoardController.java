@@ -36,9 +36,12 @@ public class BoardController {
 		return "/board/list";
 	}
 	
-	@GetMapping("/read")
-	public String boardRead() {
-		return "/board/read";
+	@GetMapping("/post")
+	public String boardPost(@RequestParam("bnum") Long bnum, Model model) {
+		boardMapper.updateVisitCount(bnum);
+		model.addAttribute("board", boardMapper.boardPostRead(bnum));
+		
+		return "/board/post";
 	}
 	
 }

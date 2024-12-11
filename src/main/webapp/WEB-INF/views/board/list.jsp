@@ -4,7 +4,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,14 +11,9 @@
 <!-- Head Requires // 헤더 공통 스크립트 -->
 <jsp:include page="/WEB-INF/views/includes/headScript.jsp"></jsp:include>
 
-<!-- Modal Style and Script -->
-<script type="text/javascript" src="/resources/js/modal.js"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/modal.css">
-
 <!-- Page Style // 개별 페이지 스타일 및 스크립트 -->
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/board/list.css" />
-<script type="text/javascript" src="/resources/js/board/list.js"></script>
 
 </head>
 <body>
@@ -29,7 +23,7 @@
 			<h1>공지사항</h1>
 			<hr>
 			<div class="list">
-				<table border="1">
+				<table>
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -43,7 +37,7 @@
 					<c:forEach items="${boardlist}" var="board">
 						<tr>
 							<td><c:out value="${ board.bnum}" /></td>
-							<td><a href='/read/post?bnum=<c:out value="${board.bnum}"/>'>
+							<td><a href='/board/post?bnum=<c:out value="${board.bnum}"/>'>
 									<c:out value="${board.title}" />
 							</a></td>
 							<td><c:out value="${board.ename}" /></td>
@@ -78,14 +72,6 @@
 						<i class="bi bi-chevron-right"></i>
 					</button>
 				</c:if>
-			</div>
-		</div>
-		<div id="eventModal" class="modal eventModal">
-			<div class="modal-content">
-				<h2 id="eventTitle"></h2>
-				<hr>
-				<div id="eventDetails"></div>
-				<button class="eventButton">닫기</button>
 			</div>
 		</div>
 	</main>
