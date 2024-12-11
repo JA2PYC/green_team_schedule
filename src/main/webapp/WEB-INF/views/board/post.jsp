@@ -17,7 +17,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 	<main>
-		<div class="post">
+		<div class="boardPost">
 			<h1>공지사항</h1>
 			<hr>
 			<input type="hidden" name="bnum" value="${board.bnum}" />
