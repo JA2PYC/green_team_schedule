@@ -29,7 +29,7 @@
 	    FROM customer;
    		]]>
 	</select>
-	
+
 	<select id="reservationRead" parameterType="long"
 		resultType="org.team.dto.ReservationDTO">
 	
@@ -37,4 +37,94 @@
 	SELECT * FROM customer WHERE rnum = #{rnum} 
 	]]>
 	</select>
+
+
+	<!-- Service Mapper -->
+	<!-- 전체 일정 조회 -->
+	<select id="selectAll" resultType="org.team.dto.BoardDTO">
+		SELECT * FROM schedule;
+	</select>
+
+	<!-- 페이징 처리된 일정 조회 -->
+	<select id="selectAllWithPagination"
+		resultType="org.team.dto.BoardDTO">
+		SELECT * FROM schedule
+		LIMIT #{offset}, #{size};
+	</select>
+
+	<!-- 특정 일정 조회 (rnum 기준) -->
+	<select id="selectScheduleById" parameterType="int"
+		resultType="org.team.dto.BoardDTO">
+		SELECT * FROM schedule
+		WHERE rnum = #{rnum};
+	</select>
+
+	<!-- 제목으로 일정 조회 -->
+	<select id="selectByTitle" parameterType="string"
+		resultType="org.team.dto.BoardDTO">
+		SELECT * FROM schedule
+		WHERE title LIKE CONCAT('%', #{title}, '%');
+	</select>
+
+	<!-- 날짜로 일정 조회 -->
+	<select id="selectByDate" parameterType="string"
+		resultType="org.team.dto.BoardDTO">
+		SELECT * FROM schedule
+		WHERE date = #{date};
+	</select>
+
+	<!-- 일정 추가 -->
+	<insert id="insertSchedule"
+		parameterType="org.team.dto.BoardDTO">
+		INSERT INTO schedule (title, date, description)
+		VALUES (#{title}, #{date}, #{description});
+	</insert>
+
+	<!-- 특정 일정 삭제 (rnum 기준) -->
+	<delete id="deleteScheduleById" parameterType="int">
+		DELETE FROM schedule
+		WHERE rnum = #{rnum};
+	</delete>
+
+	<!-- 날짜로 일정 삭제 -->
+	<delete id="deleteByDate" parameterType="string">
+		DELETE FROM schedule
+		WHERE date = #{date};
+	</delete>
+
+	<!-- 제목으로 일정 삭제 -->
+	<delete id="deleteByTitle" parameterType="string">
+		DELETE FROM schedule
+		WHERE title LIKE CONCAT('%', #{title}, '%');
+	</delete>
+
+	<!-- 일정 업데이트 -->
+	<update id="updateSchedule" parameterType="map">
+		<choose>
+			<when test="column == 'title'">
+				UPDATE schedule
+				SET title = #{target}
+				WHERE rnum = #{dto.rnum};
+			</when>
+			<when test="column == 'date'">
+				UPDATE schedule
+				SET date = #{target}
+				WHERE rnum = #{dto.rnum};
+			</when>
+			<otherwise>
+				<!-- 예외 처리 -->
+				SELECT 0; <!-- 업데이트가 없음을 나타냄 -->
+			</otherwise>
+		</choose>
+	</update>
+
+	<select id="existsScheduleById" resultType="boolean"
+		parameterType="int">
+		SELECT CASE WHEN COUNT(*) > 0 THEN TRUE ELSE FALSE END
+		FROM schedule
+		WHERE rnum = #{rnum};
+	</select>
+
+
+
 </mapper>
