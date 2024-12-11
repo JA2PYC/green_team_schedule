@@ -55,7 +55,7 @@ table tbody tr:hover {
 
 /* 링크 스타일 */
 table tbody td a {
-	color: #007bff; /* 기본 링크 색상 (파란색) */
+/* 	color: #007bff; 기본 링크 색상 (파란색) */
 	text-decoration: none; /* 밑줄 제거 */
 }
 

@@ -9,6 +9,7 @@
 			<li><a href="/board/list" class="button-link">공지사항</a></li>
 			<li><a href="/schedule/calendar" class="button-link">AS 스케쥴</a></li>
 			<li><a href="/schedule/registAS" class="button-link">AS 접수</a></li>
+			<li><a href="/schedule/processStatus" class="button-link">AS 현황</a></li>
 		</ul>
 	</nav>
 </header>

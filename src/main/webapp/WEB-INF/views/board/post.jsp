@@ -20,27 +20,35 @@
 		<div class="boardPost">
 			<h1>공지사항</h1>
 			<hr>
-			<input type="hidden" name="bnum" value="${board.bnum}" />
-			<table>
-				<thead>
-					<tr>
-						<th><c:out value="${board.bnum}" /></th>
-						<td><c:out value="${board.title}" /></td>
-					</tr>
-					<tr>
-						<th>작성자</th>
-						<td><c:out value="${board.ename}" /></td>
-						<th>작성일</th>
-						<td><fmt:formatDate pattern="yyyy-MM-dd"
-								value="${board.postdate}" /></td>
-						<th>조회수</th>
-						<td><c:out value="${board.visitcount}" /></td>
-					</tr>
-				</thead>
-				<tr>
-					<td colspan="6"><c:out value="${board.content}" /></td>
-				</tr>
-			</table>
+			<div class="post">
+				<input type="hidden" name="bnum" value="${board.bnum}" />
+				<table>
+					<thead>
+						<tr>
+							<th><c:out value="${board.bnum}" /></th>
+							<td colspan="5"><c:out value="${board.title}" /></td>
+						</tr>
+						<tr>
+							<th>작성자</th>
+							<td><c:out value="${board.ename}" /></td>
+							<th>작성일</th>
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+									value="${board.postdate}" /></td>
+							<th>조회수</th>
+							<td><c:out value="${board.visitcount}" /></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="6"><c:out value="${board.content}" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="postButton">
+				<button class="buttonList"
+					onclick="window.location.href='/board/list'">목록</button>
+			</div>
 		</div>
 	</main>
 	<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>

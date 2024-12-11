@@ -64,6 +64,19 @@ hr {
 	z-index: 1000;
 }
 
+.scheduleCalendar button {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	font-size: 16px;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+	background-color: #f68e3e; /* 버튼 기본 배경색 */
+	color: #fff; /* 텍스트 색상 */
+}
+
 .fc-day-sun .fc-col-header-cell-cushion {
 	color: red !important;
 }
@@ -85,22 +98,25 @@ hr {
 
 /* 기본 버튼 색상 */
 .fc-header-toolbar .btn-primary {
-    background-color: #f68e3e;
-    border-color: #f68e3e;
+	background-color: #f68e3e;
+	border-color: #f68e3e;
 }
 
 /* 버튼 호버 색상 */
 .fc-header-toolbar .btn-primary:hover {
-    background-color: #e77c2a;
-    border-color: #e77c2a;
+	background-color: #e77c2a;
+	border-color: #e77c2a;
 }
 
 /* 활성화된 버튼 색상 */
 .fc-header-toolbar .btn-primary.active {
-    background-color: #e77c2a;
-    border-color: #e77c2a;
+	background-color: #e77c2a;
+	border-color: #e77c2a;
 }
 
+.fc-event:hover {
+	cursor: pointer;
+}
 
 /* 반응형 디자인 */
 @media ( max-width : 768px) {

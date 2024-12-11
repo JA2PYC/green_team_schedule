@@ -18,15 +18,19 @@
 			<div class="homeMenu">
 				<a href="/board/list">
 					<div class="menuBox menuRegist">
-						<i class="bi bi-info-square"></i> <span>공지사항</span>
+						<i class="bi bi-info-square"></i><span>공지사항</span>
 					</div>
 				</a> <a href="/schedule/calendar">
 					<div class="menuBox menuCalendar">
-						<i class="bi bi-calendar-check"></i> <span>AS 스케쥴</span>
+						<i class="bi bi-calendar-check"></i><span>AS 스케쥴</span>
 					</div>
 				</a> <a href="/schedule/registAS">
 					<div class="menuBox menuRegist">
-						<i class="bi bi-file-earmark-plus"></i> <span>AS 접수</span>
+						<i class="bi bi-file-earmark-plus"></i><span>AS 접수</span>
+					</div>
+				</a> </a> <a href="/schedule/processStatus">
+					<div class="menuBox menuRegist">
+						<i class="bi bi-file-earmark-bar-graph"></i><span>AS 현황</span>
 					</div>
 				</a>
 			</div>
