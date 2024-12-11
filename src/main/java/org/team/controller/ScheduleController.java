@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,17 +45,22 @@ public class ScheduleController {
 	}
 
 	@PostMapping("/registAS")
-	public String scheduleRegistASPost(ReservationDTO reservation, RedirectAttributes rttr) {
+	public String scheduleRegistASPost(ReservationDTO reservation, @RequestParam("visitdate") String visitdate,
+			@RequestParam("visittime") String visittime, RedirectAttributes rttr) {
+
+		String visitdatetime = visitdate + visittime;
+		System.out.println(visitdatetime);
 		return "/schedule/registAS";
 	}
 
 	@GetMapping("/registResult")
-	public String scheduleRegistResult(@RequestParam("message") String message, @RequestParam("rnum") String rnum,
-			Model model) {
+	public String scheduleRegistResult(@ModelAttribute(value = "message") String message,
+			@ModelAttribute(value = "reservation") ReservationDTO reservation, Model model) {
+		System.out.println(message);
+		System.out.println(reservation);
+		// ReservationDTO dto = scheduleMapper.reservationRead(Long.parseLong(rnum));
 
-		ReservationDTO dto = scheduleMapper.reservationRead(Long.parseLong(rnum));
-
-		model.addAttribute("data", dto);
+		model.addAttribute("data", reservation);
 		model.addAttribute("message", message);
 		return "/schedule/registResult";
 	}
@@ -63,11 +69,12 @@ public class ScheduleController {
 	public String scheduleTest() {
 		return "/schedule/test";
 	}
-	//처리현황 페이지
+
+	// 처리현황 페이지
 	@GetMapping("/processStatus")
 	public String getProcessStatus(Model model) {
-	    List<ReservationDTO> statusList = scheduleMapper.getStatusList();
-	    model.addAttribute("statusList", statusList);
-	    return "/schedule/processStatusBoard"; //jsp 파일 경로
-	}	
+		List<ReservationDTO> statusList = scheduleMapper.getStatusList();
+		model.addAttribute("statusList", statusList);
+		return "/schedule/processStatusBoard"; // jsp 파일 경로
+	}
 }

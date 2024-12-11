@@ -6,7 +6,7 @@ $(document).ready(function() {
 	window.openModal = function openModal(eventDetails) {
 		console.log(eventDetails);
 		console.log(modal);
-		$("#eventTitle").text(eventDetails.title || "제목 없음");
+		$("#eventName").text(eventDetails.title || "고객 정보 없음");
 		$("#eventTime").text(eventDetails.time || "시간 정보 없음");
 		$("#eventLocation").text(eventDetails.location || "주소 없음");
 		$("#eventDetailLocation").text(eventDetails.detailLocation || "세부 주소 없음");

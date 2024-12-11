@@ -49,18 +49,30 @@ https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap5@6.1.15/index.global.min.js
 		</div>
 		<div id="eventModal" class="modal eventModal">
 			<div class="modal-content">
-				<h2 id="eventTitle">이벤트 제목</h2>
-				<div id="eventTimePlace">
-					<p>
-						시간: <span id="eventTime"></span>
-					</p>
-					<p>
-						주소: <span id="eventLocation"></span>
-					</p>
-					<p>
-						세부주소: <span id="eventDetailLocation"></span>
-					</p>
-					<p>위치</p>
+				<h2 id="eventTitle" class="eventTitle">상세내용</h2>
+				<hr class="eventHr">
+				<div id="eventDetails">
+					<table>
+						<tbody>
+							<tr>
+								<th>고객</th>
+								<td><span id="eventName"></span></td>
+							</tr>
+							<tr>
+								<th>시간</th>
+								<td><span id="eventTime"></span></td>
+							</tr>
+							<tr>
+								<th>주소</th>
+								<td><span id="eventLocation"></span></td>
+							</tr>
+							<tr>
+								<th>세부주소</th>
+								<td><span id="eventDetailLocation"></span></td>
+							</tr>
+						</tbody>
+					</table>
+					<hr class="eventHr">
 					<div id="map" style="width: 100%; height: 250px;"></div>
 				</div>
 				<button class="eventButton">닫기</button>

@@ -23,8 +23,9 @@
 					<i class="bi bi-check-circle bi-lg"></i>
 				</div>
 				<div class="resultMessage">${message }</div>
-				<div class="cname">고객${data.cname }</div>
-				<div class="visitdate">${data.visitdate }</div>
+				<hr>
+				<div class="cname">고객 ${data.cname }</div>
+				<div class="visitdate">방문일 ${data.visitdate }</div>
 			</div>
 		</div>
 	</main>

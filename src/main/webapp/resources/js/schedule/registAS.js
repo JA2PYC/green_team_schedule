@@ -1,5 +1,6 @@
 $(document).ready(() => {
 	function initialize() {
+		createButton();
 		eventHandler();
 	}
 
@@ -40,6 +41,46 @@ $(document).ready(() => {
 				}
 			}
 		}).open();
+	}
+
+	function createButton() {
+		const timeButtonsContainer = document.querySelector('.time-buttons');
+//		const displayTime = document.getElementById('displayTime');
+		const selectedTimeInput = document.getElementById('selectedTime');
+
+		// 버튼 생성 및 추가
+		for (let hour = 9; hour <= 17; hour++) {
+			const button = document.createElement('button');
+			const time = `${hour.toString().padStart(2, '0')}:00`;
+
+			button.type = 'button';
+			button.textContent = time;
+			button.dataset.time = time;
+
+			button.addEventListener('click', () => {
+				// 기존 활성화 상태 제거
+				document.querySelectorAll('.time-buttons button').forEach(btn => btn.classList.remove('active'));
+
+				// 선택한 버튼 활성화
+				button.classList.add('active');
+
+				// 선택 시간 표시 및 저장
+//				displayTime.textContent = time;
+				selectedTimeInput.value = time;
+			});
+
+			timeButtonsContainer.appendChild(button);
+		}
+
+//		// 폼 제출 이벤트
+//		document.getElementById('timeForm').addEventListener('submit', function(e) {
+//			if (!selectedTimeInput.value) {
+//				alert('시간을 선택해주세요!');
+//				e.preventDefault();
+//			} else {
+//				alert('선택된 시간: ' + selectedTimeInput.value);
+//			}
+//		});
 	}
 
 	initialize();
