@@ -63,15 +63,5 @@ public class ReservationController{
 
 	    // JSP 페이지로 이동
 	    return "redirect:/schedule/registResult";
-		}
-		@GetMapping("/New")
-		public void list(Model model) {
-			model.addAttribute("list", mapper.getList());
-			System.out.println("list");
-		}
-		@GetMapping({"/read"})
-		public void get(@RequestParam("bno") Long bno, Model model) {
-		System.out.println("/read");
-		model.addAttribute("board", mapper.reservationRead(bno));
 	}
 }
