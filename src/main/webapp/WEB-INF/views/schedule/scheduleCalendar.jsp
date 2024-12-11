@@ -66,7 +66,6 @@ https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap5@6.1.15/index.global.min.js
 				<button class="eventButton">닫기</button>
 			</div>
 		</div>
-
 	</main>
 	<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
 </body>

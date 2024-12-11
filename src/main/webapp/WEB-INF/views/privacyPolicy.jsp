@@ -15,7 +15,8 @@
 <script type="text/javascript" src="/resources/js/pdfViewer.js"></script>
 
 <!-- Page Style // 개별 페이지 스타일 및 스크립트 -->
-<link rel="stylesheet" type="text/css" href="/resources/css/privacyPolicy.css" />
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/privacyPolicy.css" />
 <script type="text/javascript" src="/resources/js/privacyPolicy.js"></script>
 
 </head>
@@ -30,10 +31,10 @@
 			<!-- 페이지 네비게이션 버튼 -->
 			<div class="page-navigation">
 				<div class="pageButton" id="prev">
-					<i class="bi bi-caret-left"></i>
+					<i class="bi bi-chevron-compact-left"></i>
 				</div>
 				<div class="pageButton" id="next">
-					<i class="bi bi-caret-right"></i>
+					<i class="bi bi-chevron-compact-right"></i>
 				</div>
 			</div>
 		</div>

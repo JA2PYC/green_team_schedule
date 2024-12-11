@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	const modal = $(".eventModal");
-	console.log(modal);
 	const closeButton = modal.find(".eventButton");
 
 	// 모달 열기 함수

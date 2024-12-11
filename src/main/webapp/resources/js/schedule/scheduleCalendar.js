@@ -7,15 +7,14 @@ $(document).ready(() => {
 
 	function eventHandler() {
 		$(document).on('click', '.eventButton', (e) => {
-			console.log(e);
 			//	closeEventDetails();
 		});
 	}
+	
 	// Full Calendar 호출
 	function callCalendar(response) {
 		// 데이터 변환
 		let eventsData = transformData(response);
-		console.log("events", eventsData);
 
 		let calendarEl = document.getElementById('calendar');
 		let calendar = new FullCalendar.Calendar(calendarEl, {
@@ -51,7 +50,6 @@ $(document).ready(() => {
 			data: { today: today }, // 파라미터 포함
 			dataType: 'json',
 			success: function(response) {
-				console.log('Success:', response);
 				// 성공 시 처리 로직 추가
 				callCalendar(response);
 			},

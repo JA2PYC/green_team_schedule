@@ -30,10 +30,10 @@
 			<!-- 페이지 네비게이션 버튼 -->
 			<div class="page-navigation">
 				<div class="pageButton" id="prev">
-					<i class="bi bi-caret-left"></i>
+					<i class="bi bi-chevron-compact-left"></i>
 				</div>
 				<div class="pageButton" id="next">
-					<i class="bi bi-caret-right"></i>
+					<i class="bi bi-chevron-compact-right"></i>
 				</div>
 			</div>
 		</div>

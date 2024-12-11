@@ -1,35 +1,5 @@
 @charset "UTF-8";
 
-/* 버튼 스타일 (전체 페이지 버튼 통일) */
-.registAS td button {
-	display: inline-block;
-	padding: 10px 20px;
-	font-size: 16px;
-	border: none;
-	border-radius: 6px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	background-color: #f68e3e; /* 버튼 기본 배경색 */
-	color: #fff; /* 텍스트 색상 */
-}
-
-.registAS td button:hover{
-	background-color: #e67e2d; /* 호버 시 배경색 */
-}
-
-.btn:active, td button:active, nav a.button-link:active {
-	background-color: #d06b26; /* 클릭 시 배경색 */
-}
-
-/* 메인 콘텐츠 */
-main {
-	padding: 40px 20px;
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	min-height: 100vh;
-}
-
 /* registAS 컨테이너 스타일 */
 .registAS {
 	background-color: #fff; /* 흰색 배경 */
@@ -105,12 +75,37 @@ textarea {
 /* 약관 체크박스 스타일 */
 #term {
 	margin-right: 10px;
+	width:auto;
 }
 
 label {
 	font-size: 14px;
 	color: #555;
 }
+
+
+/* 버튼 스타일 (전체 페이지 버튼 통일) */
+.registAS button {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	font-size: 16px;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	box-shadow: 3px 3px 5px rgba(0, 0,0, 0.3);
+	background-color: #f68e3e; /* 버튼 기본 배경색 */
+	color: #fff; /* 텍스트 색상 */
+}
+
+.registAS button:hover{
+	background-color: #e67e2d; /* 호버 시 배경색 */
+}
+
+.registAS button:active{
+	background-color: #d06b26; /* 클릭 시 배경색 */
+}
+
 
 /* 반응형 스타일 */
 @media ( max-width : 768px) {
