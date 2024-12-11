@@ -16,8 +16,8 @@ public interface BoardMapper {
 	public int getTotalCount();
 
 	// 게시판 조회수 1 증가
-	public int updateVisitCount();
+	public Long updateVisitCount(Long bnum);
 	
-	public ReservationDTO reservationRead(Long bnum);
+	public BoardDTO boardPostRead(Long bnum);
 
 }
