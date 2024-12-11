@@ -125,25 +125,10 @@ geocoder.addressSearch('울산 남구 삼산중로100번길 26', function(result
                 var centerLng = (startCoords.getLng() + destinationCoords.getLng()) / 2;
                 var centerCoords = new kakao.maps.LatLng(centerLat, centerLng);
                 map.setCenter(centerCoords);
-        
-/*         // 사용자의 현재 위치를 가져옵니다
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var currentCoords = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-            // 출발지 마커를 표시합니다
-            var startMarker = new kakao.maps.Marker({
-                map: map,
-                position: currentCoords
-            });
-
-            // 현재 위치 마커에 대한 인포윈도우 표시
-            var startInfowindow = new kakao.maps.InfoWindow({
-                content: '<div style="width:150px;text-align:center;padding:6px 0;">현재 위치</div>'
-            });
-            startInfowindow.open(map, startMarker); */
-
-                // Kakao Navi API로 경로 계산 요청
+                
                 getCarDirection(startCoords, destinationCoords);
+        
+
             }
         });
     }
@@ -151,66 +136,94 @@ geocoder.addressSearch('울산 남구 삼산중로100번길 26', function(result
         
 //카카오 네비 API를 호출하여 차량 경로를 계산하고 지도에 표시
 async function getCarDirection(startCoords, destinationCoords) {
+	
+    console.log(startCoords);
+    console.log(destinationCoords);
+
     const REST_API_KEY = '4f996114cccadd84c1b311d572c14783'; // 여기에 카카오 네비 API 키 입력
     const url = 'https://apis-navi.kakaomobility.com/v1/directions';
-
-    const origin = `${startCoords.getLng()},${startCoords.getLat()}`;
-    const destination = `${destinationCoords.getLng()},${destinationCoords.getLat()}`;
+	
+/*     const origin = String(startCoords.getLng()) + ',' + String(startCoords.getLat());
+    const destination = String(destinationCoords.getLng()) + ',' + String(destinationCoords.getLat()); */
+    
+    const origin = [startCoords.getLng(), startCoords.getLat()].join(',');
+    const destination = [destinationCoords.getLng(), destinationCoords.getLat()].join(',');
 
     const headers = {
-        Authorization: `KakaoAK ${REST_API_KEY}`,
+        Authorization: `KakaoAK 4f996114cccadd84c1b311d572c14783`,
         'Content-Type': 'application/json'
     };
 
     const queryParams = new URLSearchParams({
         origin: origin,
-        destination: destination
+        destination: destination,
+        car_type: "1",  // 차량 경로로 설정
+        options: {
+            /* avoid: ['toll'], // 유료 도로 회피 옵션 예시 */
+        } 
     });
+    
+    console.log(queryParams.toString());
 
-    const requestUrl = `${url}?${queryParams}`;
-
+    console.log(url);
+    
+    const requestUrl = String(url) + '?' + String(queryParams); // 파라미터까지 포함된 전체 URL
+    
+    console.log(requestUrl);
+    
     try {
         const response = await fetch(requestUrl, {
             method: 'GET',
-            headers: headers
+            headers: headers,
         });
 
-        // 응답이 정상적으로 반환되었는지 확인 (HTML인지 JSON인지 확인)
-        const textResponse = await response.text();  // 텍스트로 응답 확인
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-        // 텍스트 응답을 확인
-        console.log(textResponse); 
+        const data = await response.json();
+        console.log(data); // 응답 데이터 확인
+        console.log(data.routes[0]); // 응답 데이터 확인
+        console.log(data.routes[0].sections);
+        console.log(data.routes[0].sections[0]);
+        console.log(data.routes[0].sections[0].polyline);
         
-        if (response.ok) {
-            // 정상 응답일 경우 JSON으로 변환
-            const data = JSON.parse(textResponse);  // 응답을 JSON으로 변환
-            console.log(data);
+        // 경로가 존재하는지 먼저 확인하고, 없을 경우 에러 처리
+        if (data.routes && data.routes[0] && data.routes[0].sections && data.routes[0].sections[0]) {
+            const section = data.routes[0].sections[0];
+            console.log(section); // sections 안의 데이터 확인
 
-            // 경로가 반환되면 Polyline을 그립니다.
-            if (data && data.routes && data.routes[0] && data.routes[0].sections) {
-                const path = data.routes[0].sections[0].polyline;
+            // polyline 데이터가 있을 경우만 폴리라인 그리기
+            if (section.polyline) {
+                const path = section.polyline;
+                const polylinePath = path.map(point => new kakao.maps.LatLng(point[1], point[0]));  // 경로 좌표 변환
+
                 const polyline = new kakao.maps.Polyline({
                     map: map,
-                    path: path.map(point => new kakao.maps.LatLng(point[1], point[0])),  // 경로 좌표 변환
+                    path: polylinePath,
                     strokeWeight: 5,
-                    strokeColor: '#FF0000', // 경로 색상
+                    strokeColor: '#FF0000',
                     strokeOpacity: 1,
                     strokeStyle: 'solid'
                 });
 
-                polyline.setMap(map);  // 경로 지도에 표시
+                polyline.setMap(map);  // 지도에 폴리라인을 표시
             } else {
-                alert('경로를 찾을 수 없습니다.');
+                console.error('Polyline data is missing in the response.');
+                alert('경로를 찾을 수 없습니다. polyline 데이터가 없습니다.');
             }
         } else {
-            console.error('응답 오류:', response.status);
-            alert('경로 계산에 실패했습니다.');
+            console.error('Route or sections not found in the response.');
+            alert('경로를 찾을 수 없습니다.');
         }
     } catch (error) {
+        // API 호출 오류 처리
         console.error('API 호출 오류:', error);
         alert('경로 계산에 실패했습니다.');
     }
 }
+     
+
 </script>
 
 
