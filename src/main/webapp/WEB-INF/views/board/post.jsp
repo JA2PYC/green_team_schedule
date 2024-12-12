@@ -49,6 +49,13 @@
 				<button class="buttonList"
 					onclick="window.location.href='/board/list'">목록</button>
 			</div>
+ 			<div>
+			<button data-oper='update' onclick="location.href='/board/update?bnum=<c:out value="${board.bnum}"/>'">update</button>
+			</div>
+ 		<form role="form" action="/board/delete" method="post">
+ 			<input type="hidden" name="bnum" value="${board.bnum}">
+			<button type="submit" data-oper='delete'>delete</button>
+		</form>
 		</div>
 	</main>
 	<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
