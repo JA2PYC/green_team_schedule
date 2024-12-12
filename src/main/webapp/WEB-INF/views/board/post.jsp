@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Board - ${board.title }</title>
+<title>공지사항 - ${board.title }</title>
 <!-- Head Requires // 헤더 공통 스크립트 -->
 <jsp:include page="/WEB-INF/views/includes/headScript.jsp"></jsp:include>
 
@@ -46,16 +46,15 @@
 				</table>
 			</div>
 			<div class="postButton">
+				<button data-oper='update'
+					onclick="location.href='/board/update?bnum=<c:out value="${board.bnum}"/>'">수정</button>
 				<button class="buttonList"
 					onclick="window.location.href='/board/list'">목록</button>
+				<form role="form" action="/board/delete" method="post">
+					<input type="hidden" name="bnum" value="${board.bnum}">
+					<button type="submit" data-oper='delete'>삭제</button>
+				</form>
 			</div>
- 			<div>
-			<button data-oper='update' onclick="location.href='/board/update?bnum=<c:out value="${board.bnum}"/>'">update</button>
-			</div>
- 		<form role="form" action="/board/delete" method="post">
- 			<input type="hidden" name="bnum" value="${board.bnum}">
-			<button type="submit" data-oper='delete'>delete</button>
-		</form>
 		</div>
 	</main>
 	<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
