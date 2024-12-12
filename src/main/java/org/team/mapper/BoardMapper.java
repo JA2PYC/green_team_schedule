@@ -22,5 +22,11 @@ public interface BoardMapper {
 	
 	// 공지사항 글쓰기
 	public void register(BoardDTO board);
+	
+	// 공지사항 글 삭제하기
+	public int delete(Long bnum);
+	
+	// 공지사항 글 수정하기
+	public int update(BoardDTO board);
 
 }
