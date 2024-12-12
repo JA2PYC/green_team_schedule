@@ -41,10 +41,28 @@
 		]]>
 	</select>
 	
+	<!-- 공지사항 글 작성하기 -->
 	<insert id="register">
 		<![CDATA[
 		insert into board (title,content,id)
 		values (#{title}, #{content}, 'test1111')
 		]]>
 	</insert>
+	
+	<!-- 공지사항 글 삭제하기 -->
+	<delete id="delete" parameterType="long">
+		<![CDATA[
+		delete from board where bnum = #{bnum}
+		]]>
+	</delete>
+	
+	<!-- 공지사항 글 수정하기 -->
+	<update id="update">
+		<![CDATA[
+		update board
+		set title=#{title},
+		content=#{content}
+		where bnum = #{bnum}
+		]]>
+	</update>
 </mapper>
