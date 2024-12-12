@@ -11,6 +11,32 @@
 	margin: 0 auto;
 }
 
+.listTop {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 30px;
+	margin: 1rem 0;
+}
+
+.listTop button {
+	background-color: #f68e3e;
+	font-size: 1rem;
+	font-weight: 600;
+	border: none;
+	border-radius: 5px;
+	color: #f0f0f0;
+	padding: 0.5rem 1rem;
+	transition: background-color 0.3s, box-shadow 0.3s;
+	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 살짝 그림자 효과 */
+}
+
+.listTop button:hover {
+	background-color: #e57a31;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 /* 테이블 공통 스타일 */
 table {
 	width: 100%; /* 테이블 전체 너비 */
@@ -19,7 +45,7 @@ table {
 	font-size: 16px;
 	text-align: center;
 	background-color: #fff; /* 배경색 */
-/* 	border: 1px solid #ddd; 테두리 */
+	/* 	border: 1px solid #ddd; 테두리 */
 }
 
 /* 테이블 헤더 스타일 */
@@ -55,7 +81,7 @@ table tbody tr:hover {
 
 /* 링크 스타일 */
 table tbody td a {
-/* 	color: #007bff; 기본 링크 색상 (파란색) */
+	/* 	color: #007bff; 기본 링크 색상 (파란색) */
 	text-decoration: none; /* 밑줄 제거 */
 }
 

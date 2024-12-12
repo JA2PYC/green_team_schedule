@@ -22,6 +22,7 @@
 		<div class="boardList">
 			<h1>공지사항</h1>
 			<hr>
+			
 			<div class="list">
 				<table>
 					<thead>
@@ -37,8 +38,9 @@
 					<c:forEach items="${boardlist}" var="board">
 						<tr>
 							<td><c:out value="${ board.bnum}" /></td>
-							<td><a href='/board/post?bnum=<c:out value="${board.bnum}"/>'>
-									<c:out value="${board.title}" />
+							<td><a
+								href='/board/post?bnum=<c:out value="${board.bnum}"/>'> <c:out
+										value="${board.title}" />
 							</a></td>
 							<td><c:out value="${board.ename}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
@@ -73,22 +75,22 @@
 					</button>
 				</c:if>
 			</div>
-		<div>
-		<button id='regBtn' type="button">작성하기</button>
-		</div>
+			<div class="listTop">
+				<button id='regBtn' type="button">작성하기</button>
+			</div>
 		</div>
 	</main>
 	<script type="text/javascript">
-$(document).ready(function(){
-	
-	$("#regBtn").on("click", function(){
-		
-		self.location ="/board/register";
-		
-	});
-	
-});
-</script>
+		$(document).ready(function() {
+
+			$("#regBtn").on("click", function() {
+
+				self.location = "/board/register";
+
+			});
+
+		});
+	</script>
 	<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
 </body>
 </html>

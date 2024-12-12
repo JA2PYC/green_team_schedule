@@ -1,52 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@include file="../includes/header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>작성하기</title>
+<!-- Head Requires // 헤더 공통 스크립트 -->
+<jsp:include page="/WEB-INF/views/includes/headScript.jsp"></jsp:include>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">Board Register</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
+<!-- Page Style // 개별 페이지 스타일 및 스크립트 -->
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/board/register.css" />
 
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			
-			<div class="panel-heading">Board Register</div>
-			<!-- /.panel-heading -->
-			<div class="panel-body">
-			
+</head>
+<body>
+	<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
+	<main>
+		<div class="boardRegister">
+			<h1>작성하기</h1>
+			<hr>
+			<div class="register">
 				<form role="form" action="/board/register" method="post">
-					<div class="form-group">
-						<label>Title</label> <input class="form-control"
-						name='title'>
+					<table>
+						<thead>
+							<tr>
+								<th><label for="title">제목</label></th>
+								<td><input type="text" name='title' id='title'
+									class="form-control" placeholder="글제목"></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="2"><textarea class="form-control" rows="12"
+										name='content' placeholder="내용"></textarea></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="registerButton">
+						<button type="submit">작성하기</button>
 					</div>
-					
-					<div class="form-group">
-						<label>Text area</label>
-						<textarea class="form-control" rows="3" name='content'></textarea>
-					</div>
-					
-<!-- 					<div class="form-group">
-						<label>Writer</label> <input class="form-control"
-						name='id'>
-					</div> -->
-					<button type="submit" class="btn btn-default">Submit Button</button>
-					<button type="reset" class="btn btn-default">Reset Button</button>
 				</form>
 			</div>
-			<!-- end panel-body -->
-			
 		</div>
-		<!-- end panel-body -->
-	</div>
-	<!-- end panel -->
-</div>
-<!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
-<%@include file="../includes/footer.jsp" %>
+	</main>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$("#regBtn").on("click", function() {
+
+				self.location = "/board/register";
+
+			});
+
+		});
+	</script>
+	<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+</body>
+</html>
