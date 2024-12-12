@@ -240,8 +240,8 @@
         </a>
     </em>
 </p>
-<div id="map" style="width:100%;height:350px;"></div>
-
+<div id="map" style="width:100%;heix;"></div>
+ght:350p
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e1ec5378979a9f3ffe97d798bdcd05e1&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
