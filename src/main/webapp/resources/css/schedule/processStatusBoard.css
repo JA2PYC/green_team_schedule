@@ -55,3 +55,25 @@ table tbody tr:hover {
 	background-color: #f1f1f1; /* hover 시 연한 배경 */
 }
 
+table button {
+	background-color: #f8f8f8;
+	font-size: 1rem;
+	font-weight: 600;
+	border: none;
+	border-radius: 5px;
+	color: #0f0f0f;
+	padding: 0.5rem 1rem;
+	transition: background-color 0.3s, box-shadow 0.3s;
+	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 살짝 그림자 효과 */
+}
+
+table button.complete {
+	background-color: #f68e3e;
+	color: white;
+}
+
+table button:hover {
+	background-color: #e57a31;
+	color:#f0f0f0;
+	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}

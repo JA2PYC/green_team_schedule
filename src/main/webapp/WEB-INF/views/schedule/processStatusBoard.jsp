@@ -12,6 +12,8 @@
 <!-- Page Style // 개별 페이지 스타일 및 스크립트 -->
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/schedule/processStatusBoard.css">
+<script type="text/javascript"
+	src="/resources/js/schedule/processStatusBoard.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
@@ -30,8 +32,9 @@
 						<!-- cname(DB고객명) -->
 						<th>처리현황</th>
 						<!-- 새 칼럼 processStatus -->
-						<th>완료일자 및 시각</th>
+						<th>완료일시</th>
 						<!-- visitedateEnd(DB완료일자 시각) -->
+						<th>완료확인</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -43,6 +46,7 @@
 							<td>${status.processStatus}</td>
 							<!-- 새로운 칼럼 -->
 							<td>${status.visitdate_end}</td>
+							<td><button class="status">처리중</button></td>
 						</tr>
 					</c:forEach>
 				</tbody>
