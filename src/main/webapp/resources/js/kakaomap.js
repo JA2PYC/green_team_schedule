@@ -2,6 +2,7 @@
  * 
  */
 
+
 // 카카오 지도 로드 함수
 function loadMap(location) {
 	let mapContainer = document.getElementById('map');
@@ -103,19 +104,16 @@ function loadMap(location) {
 					bounds.extend(destinationCoords);
 					map.setBounds(bounds);
 
-					getCarDirection(startCoords, destinationCoords);
+					getCarDirection(startCoords, destinationCoords, map);
 
 				}
 			});
 		}
 	});
-};
+}
 
 
-async function getCarDirection(startCoords, destinationCoords) {
-
-	console.log(startCoords);
-	console.log(destinationCoords);
+async function getCarDirection(startCoords, destinationCoords, map) {
 
 	const REST_API_KEY = '4f996114cccadd84c1b311d572c14783'; // 여기에 카카오 네비 API 키 입력
 	const url = 'https://apis-navi.kakaomobility.com/v1/directions';
@@ -136,13 +134,8 @@ async function getCarDirection(startCoords, destinationCoords) {
 		destination: destination,
 	});
 
-	console.log(queryParams.toString());
-
-	console.log(url);
 
 	const requestUrl = String(url) + '?' + String(queryParams); // 파라미터까지 포함된 전체 URL
-
-	console.log(requestUrl);
 
 	const response = await fetch(requestUrl, {
 		method: 'GET',
@@ -154,15 +147,6 @@ async function getCarDirection(startCoords, destinationCoords) {
 	}
 
 	const data = await response.json();
-	console.log(data); // 응답 데이터 확인
-	console.log(data.routes[0]); // 응답 데이터 확인
-	console.log(data.routes[0].sections);
-	console.log(data.routes[0].sections[0]);
-	console.log(data.routes[0].sections[0].polyline);
-
-	console.log(data)
-	console.log(data.routes[0].sections[0].roads)
-
 
 	const linePath = [];
 	data.routes[0].sections[0].roads.forEach(router => {
@@ -178,10 +162,10 @@ async function getCarDirection(startCoords, destinationCoords) {
 	var polyline = new kakao.maps.Polyline({
 		path: linePath,
 		strokeWeight: 5,
-		strokeColor: '#F68E3E',
+		strokeColor: '#0078ff',
 		strokeOpacity: 0.7,
 		strokeStyle: 'solid'
 	});
 
 	polyline.setMap(map);  // 지도에 폴리라인을 표시
-};
+}
