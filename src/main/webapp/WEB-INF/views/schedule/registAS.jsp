@@ -112,14 +112,34 @@
 										<input type="date" name="visitdate" value="2024-12-13"
 											required />
 									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
 									<div class="calendarTime">
 										<div class="time-buttons">
 											<!-- 버튼 목록 -->
 										</div>
-										<input type="hidden" id="selectedTime" name="visittime"	required>
+										<input type="hidden" id="selectedTime" name="visittime"
+											required>
 									</div>
 								</td>
 							</tr>
+						</tbody>
+					</table>
+					<table>
+						<caption>AS 담당 기사 배정</caption>
+						<tbody>
+							<tr>
+								<td>
+									<div class="employee">
+										<div class="employeeButton"></div>
+										<input type="hidden" name="empno" id="selectedEmployee"
+											class="selectedEmployee" required />
+									</div>
+								</td>
+							</tr>
+
 						</tbody>
 					</table>
 					<table class="table">
@@ -127,14 +147,14 @@
 						<tbody>
 							<tr>
 								<th>개인정보 수집 이용</th>
-								<td><input type="checkbox" name="pinformation" id="term" required><label
-									for="term">개인정보 수집 이용 및 제3자 제공 동의서</label></td>
+								<td><input type="checkbox" name="pinformation" id="term"
+									required><label for="term">개인정보 수집 이용 및 제3자 제공
+										동의서</label></td>
 							</tr>
 						</tbody>
 					</table>
-					<div>
-						<button type="submit" class="btn btn-danger float-left">AS
-							접수하기</button>
+					<div class='d-flex justify-content-around'>
+						<button type="submit" class="btn btn-danger">AS 접수하기</button>
 					</div>
 				</form>
 			</div>

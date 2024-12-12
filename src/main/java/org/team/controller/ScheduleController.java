@@ -45,8 +45,9 @@ public class ScheduleController {
 	}
 
 	@PostMapping("/registAS")
-	public String scheduleRegistASPost(ReservationDTO reservation, @RequestParam("visitdate") String visitdate,
-			@RequestParam("visittime") String visittime, RedirectAttributes rttr) {
+	public String scheduleRegistASPost(ReservationDTO reservation,
+			@RequestParam(value = "visitdate", required = false) String visitdate,
+			@RequestParam(value = "visittime", required = false) String visittime, RedirectAttributes rttr) {
 
 		String visitdatetime = visitdate + visittime;
 		System.out.println(visitdatetime);

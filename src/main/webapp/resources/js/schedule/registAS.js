@@ -1,6 +1,7 @@
 $(document).ready(() => {
 	function initialize() {
-		createButton();
+		createTimeButton();
+		createEmployeeButton();
 		eventHandler();
 	}
 
@@ -43,9 +44,9 @@ $(document).ready(() => {
 		}).open();
 	}
 
-	function createButton() {
+	function createTimeButton() {
 		const timeButtonsContainer = document.querySelector('.time-buttons');
-//		const displayTime = document.getElementById('displayTime');
+		//		const displayTime = document.getElementById('displayTime');
 		const selectedTimeInput = document.getElementById('selectedTime');
 
 		// 버튼 생성 및 추가
@@ -65,22 +66,53 @@ $(document).ready(() => {
 				button.classList.add('active');
 
 				// 선택 시간 표시 및 저장
-//				displayTime.textContent = time;
+				//				displayTime.textContent = time;
 				selectedTimeInput.value = time;
 			});
 
 			timeButtonsContainer.appendChild(button);
 		}
 
-//		// 폼 제출 이벤트
-//		document.getElementById('timeForm').addEventListener('submit', function(e) {
-//			if (!selectedTimeInput.value) {
-//				alert('시간을 선택해주세요!');
-//				e.preventDefault();
-//			} else {
-//				alert('선택된 시간: ' + selectedTimeInput.value);
-//			}
-//		});
+		//		// 폼 제출 이벤트
+		//		document.getElementById('timeForm').addEventListener('submit', function(e) {
+		//			if (!selectedTimeInput.value) {
+		//				alert('시간을 선택해주세요!');
+		//				e.preventDefault();
+		//			} else {
+		//				alert('선택된 시간: ' + selectedTimeInput.value);
+		//			}
+		//		});
+	}
+
+	function createEmployeeButton() {
+		let $employeeContainer = $(document).find('.employee');
+		let $employeeButton = $employeeContainer.find('.employeeButton');
+		let $selectedEmployee = $employeeContainer.find('.selectedEmployee');
+
+		let employeeArr = ['정동원', '허도혁', '오범우', '장광수', '손기환'];
+
+		// 직원 버튼 생성 및 추가
+		employeeArr.forEach(employee => {
+			const button = document.createElement('button');
+			button.type = 'button';
+			button.textContent = employee;
+			button.dataset.employee = employee;
+
+			// 버튼 클릭 이벤트
+			$(button).on('click', () => {
+				// 기존 활성화 상태 제거
+				$employeeButton.find('button').removeClass('active');
+
+				// 선택한 버튼 활성화
+				$(button).addClass('active');
+
+				// 선택된 직원 이름 저장
+				$selectedEmployee.val(employee);
+			});
+
+			// 버튼 추가
+			$employeeButton.append(button);
+		});
 	}
 
 	initialize();

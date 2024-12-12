@@ -2,7 +2,6 @@
  * 
  */
 
-
 // 카카오 지도 로드 함수
 function loadMap(location) {
 	let mapContainer = document.getElementById('map');
@@ -111,8 +110,6 @@ function loadMap(location) {
 		}
 	});
 }
-
-
 async function getCarDirection(startCoords, destinationCoords, map) {
 
 	const REST_API_KEY = '4f996114cccadd84c1b311d572c14783'; // 여기에 카카오 네비 API 키 입력
@@ -133,19 +130,14 @@ async function getCarDirection(startCoords, destinationCoords, map) {
 		origin: origin,
 		destination: destination,
 	});
-
-
 	const requestUrl = String(url) + '?' + String(queryParams); // 파라미터까지 포함된 전체 URL
-
 	const response = await fetch(requestUrl, {
 		method: 'GET',
 		headers: headers
 	});
-
 	if (!response.ok) {
 		throw new Error(`HTTP error! Status: ${response.status}`);
 	}
-
 	const data = await response.json();
 
 	const linePath = [];

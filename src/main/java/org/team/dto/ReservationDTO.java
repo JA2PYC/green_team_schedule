@@ -14,7 +14,10 @@ public class ReservationDTO {
     private String visitdate;   // AS 방문일자
     private String visitdate_end;   // AS 방문일자(종료시간)
     private Boolean pinformation; // 개인정보 동의 여부
-    private String processStatus; // A/S처리현황
+    private String processStatus; // A/S처리현황 실시간 값
+    private String process_Status; // 처리현황 칼럼
+    private String empno; 
+    
 	public Long getRnum() {
 		return rnum;
 	}

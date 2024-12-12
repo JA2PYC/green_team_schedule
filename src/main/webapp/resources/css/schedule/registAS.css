@@ -141,6 +141,35 @@ label {
 	color: white;
 }
 
+
+.employeeButton {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin :0.5rem 0;
+}
+
+.employeeButton button {
+	padding: 10px 20px;
+	font-size: 16px;
+	color: #0f0f0f;
+	background-color: #f8f8f8;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
+	transition: background-color 0.3s;
+}
+
+.employeeButton button:hover {
+	background-color: #e0e0e0;
+}
+
+.employeeButton button.active {
+	background-color: #f68e3e;
+	color: white;
+}
+
 /* 반응형 스타일 */
 @media ( max-width : 768px) {
 	main {
