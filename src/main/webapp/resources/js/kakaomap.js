@@ -130,6 +130,8 @@ async function getCarDirection(startCoords, destinationCoords, map) {
 		origin: origin,
 		destination: destination,
 	});
+	
+	// const requestUrl = String(url) + '?' + String(queryParams); // 파라미터까지 포함된 전체 URL
 	const requestUrl = String(url) + '?' + String(queryParams); // 파라미터까지 포함된 전체 URL
 	const response = await fetch(requestUrl, {
 		method: 'GET',
