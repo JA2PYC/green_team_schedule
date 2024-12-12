@@ -41,6 +41,9 @@ public class Ny_ReservationController {
         // 페이징 정보 모델에 추가
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
+        
+		model.addAttribute("list", Ny_mapper.getList());
+		System.out.println("list");
 	}
 	
 	// 게시판 상세보기

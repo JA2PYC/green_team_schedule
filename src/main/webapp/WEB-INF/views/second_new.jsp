@@ -75,6 +75,12 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         level: 5 // 지도의 확대 레벨
     };  
 
+var destinationData = <c:forEach var="path" items="${list}" varStatus="status">
+            		  "<c:out value="${path.address}"/>" // DB에서 가져온 예약고객 목적지 장소 값
+    				  </c:forEach>
+
+console.log(destinationData);
+            		  
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
@@ -102,7 +108,7 @@ geocoder.addressSearch('울산 남구 삼산중로100번길 26', function(result
         startInfowindow.open(map, startMarker);
 
         // 목적지 주소를 '울산 남구 중앙로 201'으로 설정하여 좌표를 검색합니다
-        geocoder.addressSearch('울산 남구 중앙로 201', function(result, status) {
+        geocoder.addressSearch(destinationData, function(result, status) {
 
             if (status === kakao.maps.services.Status.OK) {
 
@@ -126,9 +132,14 @@ geocoder.addressSearch('울산 남구 삼산중로100번길 26', function(result
                 var centerCoords = new kakao.maps.LatLng(centerLat, centerLng);
                 map.setCenter(centerCoords);
                 
+                // 출발지와 목적지의 경계 설정
+                var bounds = new kakao.maps.LatLngBounds();
+                bounds.extend(startCoords);
+                bounds.extend(destinationCoords);
+                map.setBounds(bounds);
+                
                 getCarDirection(startCoords, destinationCoords);
         
-
             }
         });
     }
@@ -157,10 +168,6 @@ async function getCarDirection(startCoords, destinationCoords) {
     const queryParams = new URLSearchParams({
         origin: origin,
         destination: destination,
-        car_type: "1",  // 차량 경로로 설정
-        options: {
-            /* avoid: ['toll'], // 유료 도로 회피 옵션 예시 */
-        } 
     });
     
     console.log(queryParams.toString());
@@ -171,10 +178,9 @@ async function getCarDirection(startCoords, destinationCoords) {
     
     console.log(requestUrl);
     
-    try {
         const response = await fetch(requestUrl, {
             method: 'GET',
-            headers: headers,
+            headers: headers
         });
 
         if (!response.ok) {
@@ -188,40 +194,31 @@ async function getCarDirection(startCoords, destinationCoords) {
         console.log(data.routes[0].sections[0]);
         console.log(data.routes[0].sections[0].polyline);
         
-        // 경로가 존재하는지 먼저 확인하고, 없을 경우 에러 처리
-        if (data.routes && data.routes[0] && data.routes[0].sections && data.routes[0].sections[0]) {
-            const section = data.routes[0].sections[0];
-            console.log(section); // sections 안의 데이터 확인
+        console.log(data)
+        console.log(data.routes[0].sections[0].roads)
 
-            // polyline 데이터가 있을 경우만 폴리라인 그리기
-            if (section.polyline) {
-                const path = section.polyline;
-                const polylinePath = path.map(point => new kakao.maps.LatLng(point[1], point[0]));  // 경로 좌표 변환
-
-                const polyline = new kakao.maps.Polyline({
-                    map: map,
-                    path: polylinePath,
-                    strokeWeight: 5,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 1,
-                    strokeStyle: 'solid'
-                });
-
-                polyline.setMap(map);  // 지도에 폴리라인을 표시
-            } else {
-                console.error('Polyline data is missing in the response.');
-                alert('경로를 찾을 수 없습니다. polyline 데이터가 없습니다.');
+        
+        const linePath = [];
+        data.routes[0].sections[0].roads.forEach(router => {
+          router.vertexes.forEach((vertex, index) => {
+             // x,y 좌표가 우르르 들어옵니다. 그래서 인덱스가 짝수일 때만 linePath에 넣어봅시다.
+             // 저도 실수한 것인데 lat이 y이고 lng이 x입니다.
+            if (index % 2 === 0) {
+              linePath.push(new kakao.maps.LatLng(router.vertexes[index + 1], router.vertexes[index]));
             }
-        } else {
-            console.error('Route or sections not found in the response.');
-            alert('경로를 찾을 수 없습니다.');
-        }
-    } catch (error) {
-        // API 호출 오류 처리
-        console.error('API 호출 오류:', error);
-        alert('경로 계산에 실패했습니다.');
-    }
-}
+          });
+        });
+
+        var polyline = new kakao.maps.Polyline({
+            path: linePath,
+            strokeWeight: 5,
+            strokeColor: '#F68E3E',
+            strokeOpacity: 0.7,
+            strokeStyle: 'solid'
+          });
+
+        polyline.setMap(map);  // 지도에 폴리라인을 표시
+};
      
 
 </script>
