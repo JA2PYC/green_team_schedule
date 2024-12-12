@@ -32,9 +32,9 @@
 						<!-- cname(DB고객명) -->
 						<th>처리현황</th>
 						<!-- 새 칼럼 processStatus -->
-						<th>완료일시</th>
+						<th>완료 예정일시</th>
 						<!-- visitedateEnd(DB완료일자 시각) -->
-						<th>완료확인</th>
+						<th>처리 버튼</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -46,7 +46,7 @@
 							<td>${status.processStatus}</td>
 							<!-- 새로운 칼럼 -->
 							<td>${status.visitdate_end}</td>
-							<td><button class="status">처리중</button></td>
+							<td><button class="status">처리 버튼</button></td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -40,7 +40,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="6"><c:out value="${board.content}" /></td>
+							<td colspan="6"><c:out value="${board.content.replace()}" /></td>
 						</tr>
 					</tbody>
 				</table>
