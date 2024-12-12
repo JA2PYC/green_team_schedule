@@ -110,7 +110,9 @@ function loadMap(location) {
 		}
 	});
 }
-async function getCarDirection(startCoords, destinationCoords, map) {
+
+//async function getCarDirection(startCoords, destinationCoords, map) {
+function getCarDirection(startCoords, destinationCoords, map) {
 
 	const REST_API_KEY = '4f996114cccadd84c1b311d572c14783'; // 여기에 카카오 네비 API 키 입력
 	const url = 'https://apis-navi.kakaomobility.com/v1/directions';
