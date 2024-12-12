@@ -8,6 +8,7 @@ public class BoardDTO {
 	private String content;  // 게시판 내용
 	private Date postdate; // 게시판 등록날짜
 	private Long visitcount;  // 게시판 조회수
+	private String id;  // 게시판 조회수
 	private String ename; // 게시자 이름
 	
     // Getter and Setter
@@ -42,6 +43,12 @@ public class BoardDTO {
 	public void setVisitcount(Long visitcount) {
 		this.visitcount = visitcount;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getEname() {
 		return ename;
 	}
@@ -52,7 +59,7 @@ public class BoardDTO {
 	@Override
 	public String toString() {
 		return "BoardDTO [bnum=" + bnum + ", title=" + title + ", content=" + content + ", postdate=" + postdate
-				+ ", visitcount=" + visitcount + ", ename=" + ename + "]";
+				+ ", visitcount=" + visitcount + ", id=" + id + ", ename=" + ename + "]";
 	}
 	
 	

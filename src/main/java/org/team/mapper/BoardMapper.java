@@ -19,5 +19,8 @@ public interface BoardMapper {
 	public Long updateVisitCount(Long bnum);
 	
 	public BoardDTO boardPostRead(Long bnum);
+	
+	// 공지사항 글쓰기
+	public void register(BoardDTO board);
 
 }

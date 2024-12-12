@@ -40,4 +40,11 @@
 		where bnum = #{bnum}
 		]]>
 	</select>
+	
+	<insert id="register">
+		<![CDATA[
+		insert into board (title,content,id)
+		values (#{title}, #{content}, 'test1111')
+		]]>
+	</insert>
 </mapper>

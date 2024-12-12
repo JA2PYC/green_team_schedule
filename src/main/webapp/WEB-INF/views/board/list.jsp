@@ -73,8 +73,22 @@
 					</button>
 				</c:if>
 			</div>
+		<div>
+		<button id='regBtn' type="button">작성하기</button>
+		</div>
 		</div>
 	</main>
+	<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#regBtn").on("click", function(){
+		
+		self.location ="/board/register";
+		
+	});
+	
+});
+</script>
 	<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
 </body>
 </html>
