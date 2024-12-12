@@ -73,7 +73,7 @@ https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap5@6.1.15/index.global.min.js
 						</tbody>
 					</table>
 					<hr class="eventHr">
-					<div id="map" style="width: 100%; height: 250px;"></div>
+					<div id="map" style="width: 100%; height: 400px;"></div>
 				</div>
 				<button class="eventButton">닫기</button>
 			</div>
