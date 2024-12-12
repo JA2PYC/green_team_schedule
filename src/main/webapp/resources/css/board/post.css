@@ -45,8 +45,9 @@ table td {
 .postButton {
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: center;
 	margin: 1rem;
+	gap:30px;
 }
 
 .postButton button {
