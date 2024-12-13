@@ -1,8 +1,9 @@
 USE as_management;
 
 DESC customer;
-SELECT * FROM customer;
+SELECT * FROM customer WHERE address LIKE '%그린컴퓨터아카데미%';
 
+UPDATE customer SET address ='울산 남구 번영로 212' WHERE rnum=117;
 -- DELETE FROM customer WHERE rnum=59 LIMIT 10;
 
 ALTER TABLE customer
